@@ -112,6 +112,8 @@ test('capturas obrigatórias', async ({ browser }) => {
   await expect.poll(async () => mobilePage.locator('.bruna-photo').evaluate((image) => image.complete && image.naturalWidth > 0)).toBeTruthy();
   await mobilePage.evaluate(() => window.scrollTo(0, 0));
   await mobilePage.screenshot({ path: path.join(screenshotDir, 'bruna-mobile-390-primeira-dobra.png') });
+  await mobilePage.locator('.portrait-img').scrollIntoViewIfNeeded();
+  await expect.poll(async () => mobilePage.locator('.portrait-img').evaluate((img) => img.complete && img.naturalWidth > 0)).toBeTruthy();
   for (const poster of await mobilePage.locator('.media-card__poster').all()) {
     await poster.scrollIntoViewIfNeeded();
     await expect.poll(async () => poster.evaluate((image) => image.complete && image.naturalWidth > 0)).toBeTruthy();
@@ -124,6 +126,8 @@ test('capturas obrigatórias', async ({ browser }) => {
   const desktopPage = await desktop.newPage();
   await desktopPage.goto(baseURL, { waitUntil: 'domcontentloaded' });
   await expect.poll(async () => desktopPage.locator('.bruna-photo').evaluate((image) => image.complete && image.naturalWidth > 0)).toBeTruthy();
+  await desktopPage.locator('.portrait-img').scrollIntoViewIfNeeded();
+  await expect.poll(async () => desktopPage.locator('.portrait-img').evaluate((img) => img.complete && img.naturalWidth > 0)).toBeTruthy();
   for (const poster of await desktopPage.locator('.media-card__poster').all()) {
     await poster.scrollIntoViewIfNeeded();
     await expect.poll(async () => poster.evaluate((image) => image.complete && image.naturalWidth > 0)).toBeTruthy();
