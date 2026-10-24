@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const path = require('path');
 
-const baseURL = process.env.QA_BASE_URL || 'http://127.0.0.1:3002';
+const baseURL = process.env.QA_BASE_URL || 'http://127.0.0.1:3000';
 const viewports = [320, 360, 375, 390, 414, 430, 768, 1024, 1440];
 const screenshotDir = path.resolve(__dirname, '..', 'qa', 'screenshots');
 
@@ -102,6 +102,48 @@ test('CTAs, formulário e quatro players funcionam no mobile', async ({ browser 
   await expect(page.locator('#sendWhatsApp')).toBeHidden();
   await page.locator('#formOverlay [data-close]').click();
   await expect(page.locator('#formOverlay')).toBeHidden();
+  await context.close();
+});
+
+test('carrossel horizontal de avaliações do Google navega com setas e pontos', async ({ browser }) => {
+  const context = await browser.newContext({
+    viewport: { width: 1024, height: 800 },
+    reducedMotion: 'reduce'
+  });
+  const page = await context.newPage();
+  await page.goto(baseURL, { waitUntil: 'domcontentloaded' });
+
+  const carousel = page.locator('.reviews-carousel');
+  await carousel.scrollIntoViewIfNeeded();
+  await expect(carousel).toBeVisible();
+
+  // Verificar carregamento das 4 fotos de perfil dos avaliadores
+  const photos = page.locator('.review-card__photo');
+  expect(await photos.count()).toBe(4);
+  for (let i = 0; i < 4; i++) {
+    await expect.poll(async () => photos.nth(i).evaluate((img) => img.complete && img.naturalWidth > 0)).toBeTruthy();
+  }
+
+  // Verificar estado inicial (1 / 4)
+  const counter = page.locator('#reviewsCounter');
+  await expect(counter).toHaveText('1 / 4');
+  const dots = page.locator('.carousel-dot');
+  await expect(dots.nth(0)).toHaveClass(/is-active/);
+
+  // Clicar em próxima avaliação (seta direita)
+  await page.locator('#reviewsNextBtn').click();
+  await expect(counter).toHaveText('2 / 4');
+  await expect(dots.nth(1)).toHaveClass(/is-active/);
+
+  // Clicar no ponto 3 (índice 2)
+  await dots.nth(2).click();
+  await expect(counter).toHaveText('3 / 4');
+  await expect(dots.nth(2)).toHaveClass(/is-active/);
+
+  // Clicar em avaliação anterior (seta esquerda)
+  await page.locator('#reviewsPrevBtn').click();
+  await expect(counter).toHaveText('2 / 4');
+
   await context.close();
 });
 

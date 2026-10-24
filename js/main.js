@@ -693,5 +693,88 @@
     observer.observe(leadSection);
   }
 
+  /* ==========================================================================
+     7. Carrossel Horizontal de Avaliações do Google
+     ========================================================================== */
+  const reviewsTrack = document.getElementById('reviewsTrack');
+  const reviewSlides = document.querySelectorAll('.review-card');
+  const prevReviewBtn = document.getElementById('reviewsPrevBtn');
+  const nextReviewBtn = document.getElementById('reviewsNextBtn');
+  const reviewsCounter = document.getElementById('reviewsCounter');
+  const reviewDots = document.querySelectorAll('.carousel-dot');
+  const reviewsContainer = document.querySelector('.reviews-carousel');
+
+  if (reviewsTrack && reviewSlides.length > 0) {
+    let currentSlide = 0;
+    const totalSlides = reviewSlides.length;
+
+    const goToSlide = (index) => {
+      currentSlide = (index + totalSlides) % totalSlides;
+      reviewsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      if (reviewsCounter) {
+        reviewsCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+      }
+
+      reviewDots.forEach((dot, idx) => {
+        const isActive = idx === currentSlide;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-selected', String(isActive));
+      });
+    };
+
+    if (prevReviewBtn) {
+      prevReviewBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(currentSlide - 1);
+      });
+    }
+
+    if (nextReviewBtn) {
+      nextReviewBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSlide(currentSlide + 1);
+      });
+    }
+
+    reviewDots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetIndex = Number(dot.dataset.index || 0);
+        goToSlide(targetIndex);
+      });
+    });
+
+    // Touch swipe navigation for mobile
+    if (reviewsContainer) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      reviewsContainer.addEventListener(
+        'touchstart',
+        (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+        },
+        { passive: true }
+      );
+
+      reviewsContainer.addEventListener(
+        'touchend',
+        (e) => {
+          touchEndX = e.changedTouches[0].clientX;
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+              goToSlide(currentSlide + 1);
+            } else {
+              goToSlide(currentSlide - 1);
+            }
+          }
+        },
+        { passive: true }
+      );
+    }
+  }
+
   console.log('Landing page Bruna — Mentoria de Carreira carregada com sucesso.');
 })();

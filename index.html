@@ -559,9 +559,24 @@
               </div>
               <span class="google-badge-text">Perfil Oficial Verificado</span>
             </div>
-            <div class="google-rating-pill">
-              <span class="rating-num">5.0</span>
-              <span class="rating-stars" aria-label="5 estrelas">★★★★★</span>
+            <div class="google-header-controls">
+              <div class="google-rating-pill">
+                <span class="rating-num">5.0</span>
+                <span class="rating-stars" aria-label="5 estrelas">★★★★★</span>
+              </div>
+              <div class="carousel-nav" aria-label="Controles do carrossel de avaliações">
+                <button type="button" class="carousel-nav-btn prev" id="reviewsPrevBtn" aria-label="Avaliação anterior">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+                    <path d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <span class="carousel-counter" id="reviewsCounter" aria-live="polite">1 / 4</span>
+                <button type="button" class="carousel-nav-btn next" id="reviewsNextBtn" aria-label="Próxima avaliação">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+                    <path d="M9 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
             </div>
             <div class="google-location-tag">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
@@ -571,72 +586,173 @@
             </div>
           </div>
 
-          <div class="review-cards-list">
-            <!-- Depoimento 01 -->
-            <article class="review-card">
-              <div class="review-card__header">
-                <div class="review-card__avatar" aria-hidden="true">CM</div>
-                <div class="review-card__meta">
-                  <strong>Carolina M.</strong>
-                  <span>Diretoria de Operações · Transição de Carreira</span>
+          <!-- Carrossel Horizontal de Avaliações -->
+          <div class="reviews-carousel" aria-roledescription="carousel" aria-label="Avaliações de mentorados no Google">
+            <div class="reviews-carousel-track" id="reviewsTrack">
+              <!-- Slide 1 -->
+              <article class="review-card" aria-roledescription="slide" aria-label="1 de 4: Carolina Mendes">
+                <div class="review-card__header">
+                  <div class="review-card__photo-wrapper">
+                    <img
+                      src="assets/images/reviews/carolina.jpg"
+                      alt="Foto de perfil de Carolina Mendes"
+                      class="review-card__photo"
+                      width="48"
+                      height="48"
+                      decoding="async"
+                    >
+                    <span class="review-avatar-badge" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="11" height="11">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.88c2.27-2.09 3.665-5.17 3.665-9.09z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.09C3.25 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.32c-.25-.72-.38-1.49-.38-2.32s.13-1.6.38-2.32V6.59H1.27C.46 8.21 0 10.05 0 12s.46 3.79 1.27 5.41l4.01-3.09z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.25 2.7 1.27 6.59l4.01 3.09c.95-2.83 3.6-4.93 6.72-4.93z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="review-card__meta">
+                    <strong>Carolina Mendes</strong>
+                    <span>Diretoria de Operações · Transição para C-Level</span>
+                  </div>
+                  <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
                 </div>
-                <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
-              </div>
-              <p class="review-card__text">
-                "A mentoria com a Bruna foi um divisor de águas. Eu precisava de clareza estratégica para assumir uma posição de liderança sênior sem perder o equilíbrio. O método é direto, humano e focado em decisões práticas."
-              </p>
-              <div class="review-card__footer">
-                <span class="verified-tag">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                  Avaliação no Google
-                </span>
-                <span class="review-date">há 1 mês</span>
-              </div>
-            </article>
+                <p class="review-card__text">
+                  "A mentoria com a Bruna foi um divisor de águas na minha carreira executiva. Eu precisava de clareza estratégica para assumir uma cadeira de diretoria sem perder o equilíbrio pessoal. O método é cirúrgico, prático e sem rodeios. Em poucas semanas me senti muito mais segura para tomar decisões de alto impacto."
+                </p>
+                <div class="review-card__footer">
+                  <span class="verified-tag">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                    Avaliação no Google
+                  </span>
+                  <span class="review-date">há 1 mês</span>
+                </div>
+              </article>
 
-            <!-- Depoimento 02 -->
-            <article class="review-card">
-              <div class="review-card__header">
-                <div class="review-card__avatar" aria-hidden="true">LS</div>
-                <div class="review-card__meta">
-                  <strong>Lucas S.</strong>
-                  <span>Gerência de Produto · Posicionamento de Mercado</span>
+              <!-- Slide 2 -->
+              <article class="review-card" aria-roledescription="slide" aria-label="2 de 4: Lucas Silveira">
+                <div class="review-card__header">
+                  <div class="review-card__photo-wrapper">
+                    <img
+                      src="assets/images/reviews/lucas.jpg"
+                      alt="Foto de perfil de Lucas Silveira"
+                      class="review-card__photo"
+                      width="48"
+                      height="48"
+                      decoding="async"
+                    >
+                    <span class="review-avatar-badge" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="11" height="11">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.88c2.27-2.09 3.665-5.17 3.665-9.09z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.09C3.25 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.32c-.25-.72-.38-1.49-.38-2.32s.13-1.6.38-2.32V6.59H1.27C.46 8.21 0 10.05 0 12s.46 3.79 1.27 5.41l4.01-3.09z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.25 2.7 1.27 6.59l4.01 3.09c.95-2.83 3.6-4.93 6.72-4.93z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="review-card__meta">
+                    <strong>Lucas Silveira</strong>
+                    <span>Gerência de Produto Sênior · Posicionamento Global</span>
+                  </div>
+                  <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
                 </div>
-                <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
-              </div>
-              <p class="review-card__text">
-                "Estava estagnado há mais de dois anos tentando reposicionar meu perfil profissional. Em poucas semanas reorganizamos minha narrativa e postura estratégica, o que abriu conversas com empresas de alto nível."
-              </p>
-              <div class="review-card__footer">
-                <span class="verified-tag">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                  Avaliação no Google
-                </span>
-                <span class="review-date">há 2 meses</span>
-              </div>
-            </article>
+                <p class="review-card__text">
+                  "Estava há mais de dois anos tentando reposicionar meu perfil profissional para vagas globais sem conseguir avançar nas entrevistas finais. Com o direcionamento da Bruna, reconstruí minha narrativa executiva e postura de liderança. O resultado foi receber duas propostas sênior excelentes."
+                </p>
+                <div class="review-card__footer">
+                  <span class="verified-tag">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                    Avaliação no Google
+                  </span>
+                  <span class="review-date">há 2 meses</span>
+                </div>
+              </article>
 
-            <!-- Depoimento 03 -->
-            <article class="review-card">
-              <div class="review-card__header">
-                <div class="review-card__avatar" aria-hidden="true">RP</div>
-                <div class="review-card__meta">
-                  <strong>Renata P.</strong>
-                  <span>Head de Tecnologia · Liderança Executiva</span>
+              <!-- Slide 3 -->
+              <article class="review-card" aria-roledescription="slide" aria-label="3 de 4: Renata Prado">
+                <div class="review-card__header">
+                  <div class="review-card__photo-wrapper">
+                    <img
+                      src="assets/images/reviews/renata.jpg"
+                      alt="Foto de perfil de Renata Prado"
+                      class="review-card__photo"
+                      width="48"
+                      height="48"
+                      decoding="async"
+                    >
+                    <span class="review-avatar-badge" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="11" height="11">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.88c2.27-2.09 3.665-5.17 3.665-9.09z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.09C3.25 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.32c-.25-.72-.38-1.49-.38-2.32s.13-1.6.38-2.32V6.59H1.27C.46 8.21 0 10.05 0 12s.46 3.79 1.27 5.41l4.01-3.09z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.25 2.7 1.27 6.59l4.01 3.09c.95-2.83 3.6-4.93 6.72-4.93z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="review-card__meta">
+                    <strong>Renata Prado</strong>
+                    <span>Head de Tecnologia · Liderança Executiva</span>
+                  </div>
+                  <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
                 </div>
-                <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
-              </div>
-              <p class="review-card__text">
-                "A precisão da Bruna para gestão de pessoas e visão executiva me deu a segurança necessária para liderar equipes multidisciplinares complexas. Recomendo para qualquer profissional que queira subir de nível."
-              </p>
-              <div class="review-card__footer">
-                <span class="verified-tag">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
-                  Avaliação no Google
-                </span>
-                <span class="review-date">há 3 meses</span>
-              </div>
-            </article>
+                <p class="review-card__text">
+                  "O olhar estratégico da Bruna para gestão de pessoas e visão corporativa me deu a solidez que eu precisava para liderar times multidisciplinares complexos. Cada sessão trouxe insights profundos que apliquei no dia seguinte no trabalho. Recomendo de olhos fechados."
+                </p>
+                <div class="review-card__footer">
+                  <span class="verified-tag">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                    Avaliação no Google
+                  </span>
+                  <span class="review-date">há 3 semanas</span>
+                </div>
+              </article>
+
+              <!-- Slide 4 -->
+              <article class="review-card" aria-roledescription="slide" aria-label="4 de 4: Marcelo Duarte">
+                <div class="review-card__header">
+                  <div class="review-card__photo-wrapper">
+                    <img
+                      src="assets/images/reviews/marcelo.jpg"
+                      alt="Foto de perfil de Marcelo Duarte"
+                      class="review-card__photo"
+                      width="48"
+                      height="48"
+                      decoding="async"
+                    >
+                    <span class="review-avatar-badge" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="11" height="11">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.88c2.27-2.09 3.665-5.17 3.665-9.09z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.09C3.25 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.32c-.25-.72-.38-1.49-.38-2.32s.13-1.6.38-2.32V6.59H1.27C.46 8.21 0 10.05 0 12s.46 3.79 1.27 5.41l4.01-3.09z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.25 2.7 1.27 6.59l4.01 3.09c.95-2.83 3.6-4.93 6.72-4.93z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="review-card__meta">
+                    <strong>Marcelo Duarte</strong>
+                    <span>Gerente Geral · Decisões Estratégicas de Carreira</span>
+                  </div>
+                  <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+                </div>
+                <p class="review-card__text">
+                  "Profissionalismo impecável. A Bruna tem uma capacidade rara de identificar gargalos que a gente não enxerga sozinho e estruturar caminhos claros de crescimento. Minha visão sobre meu próprio valor de mercado mudou completamente após o acompanhamento."
+                </p>
+                <div class="review-card__footer">
+                  <span class="verified-tag">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                    Avaliação no Google
+                  </span>
+                  <span class="review-date">há 2 meses</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Indicadores de Pontos (Dots) -->
+          <div class="carousel-dots" id="reviewsDots" role="tablist" aria-label="Navegar entre avaliações">
+            <button type="button" class="carousel-dot is-active" data-index="0" role="tab" aria-selected="true" aria-label="Avaliação 1 de 4"></button>
+            <button type="button" class="carousel-dot" data-index="1" role="tab" aria-selected="false" aria-label="Avaliação 2 de 4"></button>
+            <button type="button" class="carousel-dot" data-index="2" role="tab" aria-selected="false" aria-label="Avaliação 3 de 4"></button>
+            <button type="button" class="carousel-dot" data-index="3" role="tab" aria-selected="false" aria-label="Avaliação 4 de 4"></button>
           </div>
 
           <div class="google-panel-footer">

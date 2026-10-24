@@ -1691,6 +1691,11 @@
     gap: 12px;
   }
 
+  .google-header-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .faq {
     padding: 85px 0;
   }
