@@ -1,0 +1,198 @@
+/**
+ * BRUNA — Mentoria de Carreira e Executiva
+ * Base CSS: Reset, Typography, Accessibility & Global Utilities
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--night);
+  color: var(--white);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Accessibility Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--lilac);
+  color: var(--ink);
+  padding: 12px 18px;
+  z-index: 999;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 2px solid white;
+}
+
+/* Form Elements Reset */
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+svg {
+  display: block;
+}
+
+/* Accessible Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 4px;
+}
+
+/* Selection Highlight */
+::selection {
+  background: #A58AFF;
+  color: #0B0A13;
+}
+
+/* Container */
+.container {
+  width: min(var(--max), calc(100% - 88px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Typography Helpers */
+.eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.19em;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.eyebrow .star {
+  color: #C0ABFF;
+  margin-right: 8px;
+}
+
+.accent {
+  color: #C2ADFF;
+}
+
+.serif {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.gradient-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline;
+}
+
+.section-title {
+  font-size: clamp(42px, 5vw, 69px);
+  line-height: 1.06;
+  letter-spacing: -0.062em;
+  font-weight: 650;
+  margin: 20px 0 20px;
+  max-width: 820px;
+}
+
+.section-intro {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #76737D;
+  max-width: 530px;
+}
+
+.soft-note {
+  font-size: 10px;
+  line-height: 1.6;
+  opacity: 0.62;
+}
+
+/* Keyframes */
+@keyframes breath {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(149, 117, 255, 0.4), 0 0 17px #A881FF;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(149, 117, 255, 0), 0 0 22px #A881FF;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(149, 117, 255, 0), 0 0 17px #A881FF;
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

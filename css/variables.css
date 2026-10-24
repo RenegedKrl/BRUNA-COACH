@@ -1,0 +1,60 @@
+/**
+ * BRUNA — Mentoria de Carreira e Executiva
+ * Design System Tokens (Conceito 02)
+ */
+
+:root {
+  /* Paleta Escura Principal */
+  --ink: #0B0B15;
+  --night: #090911;
+  --panel: #14131F;
+  --panel-dark: #11101C;
+  --method-bg: #0D0C18;
+  --demobar-bg: #241F35;
+  --demobar-text: #D2C4F2;
+
+  /* Paleta Clara de Seções */
+  --light: #F5F3F2;
+  --spotlight-bg: #F4F1F8;
+  --lead-bg: #EFEAF7;
+  --text: #191721;
+  --muted-dark: #74727B;
+  --border-light: #E7E4EB;
+
+  /* Cores de Destaque Violeta / Lavanda */
+  --lilac: #B5A0FF;
+  --iris: #846AFF;
+  --iris-dark: #6A4BAA;
+  --violet-primary: #9879FF;
+  --lavender: #C5AFFF;
+  --pink: #D4B4EF;
+  --white: #F9F8F8;
+  --muted: #BBB8C8;
+  --line: rgba(255, 255, 255, 0.13);
+  --line-strong: rgba(255, 255, 255, 0.22);
+
+  /* Gradientes */
+  --grad-primary: linear-gradient(110deg, #C5AFFF 0%, #9879FF 100%);
+  --grad-text: linear-gradient(110deg, #EEE7FF 5%, #AC92FF 48%, #E0B9DB 99%);
+  --grad-manifesto: linear-gradient(108deg, #181327 0%, #211934 60%, #1A1425 100%);
+  --grad-method-card: linear-gradient(135deg, #1D182D 0%, #12111C 60%);
+  --grad-method-highlight: linear-gradient(140deg, #28203E 0%, #171424 70%);
+
+  /* Sombras */
+  --shadow-btn-primary: 0 9px 35px rgba(124, 82, 255, 0.32);
+  --shadow-btn-hover: 0 14px 48px rgba(151, 122, 255, 0.46);
+  --shadow-card: 0 18px 30px rgba(35, 27, 58, 0.06);
+  --shadow-panel: 0 30px 70px rgba(29, 19, 34, 0.07);
+  --shadow-modal: 0 40px 100px rgba(0, 0, 0, 0.7);
+
+  /* Layout */
+  --max: 1220px;
+  --radius-sm: 9px;
+  --radius-md: 17px;
+  --radius-lg: 21px;
+  --radius-xl: 25px;
+
+  /* Tipografia */
+  --sans: 'Inter Display', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --serif: Georgia, 'Times New Roman', serif;
+}

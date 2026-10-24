@@ -1,0 +1,25 @@
+{
+  "name": "bruna-mentoria-carreira",
+  "version": "1.0.0",
+  "description": "Landing Page Premium para Bruna — Mentoria de Carreira e Executiva (Conceito 02)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check": "node --check server.js && node --check js/config.js && node --check js/main.js",
+    "build": "node scripts/build.js",
+    "qa": "playwright test tests/landing-page.qa.spec.js --reporter=line --workers=1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  },
+  "keywords": [
+    "mentoria",
+    "carreira",
+    "executiva",
+    "landing-page",
+    "premium"
+  ],
+  "author": "Pinas Studio",
+  "license": "ISC"
+}
