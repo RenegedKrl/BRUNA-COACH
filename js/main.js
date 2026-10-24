@@ -164,30 +164,316 @@
   });
 
   /* ==========================================================================
-     4. Controle de Vídeos (Player real, Demo ou Estrutura Editorial)
+     4. Sistema de Vídeo VSL (Player Inline na Apresentação e Modal nos Curtos)
+        Anti-Avanço / Anti-Download / Anti-Velocidade (Retenção Máxima)
      ========================================================================== */
-  const videoCards = document.querySelectorAll('[data-video]');
+
+  // Formata segundos em MM:SS
+  const formatTime = (timeInSeconds) => {
+    if (!timeInSeconds || isNaN(timeInSeconds) || !isFinite(timeInSeconds)) return '00:00';
+    const totalSecs = Math.floor(timeInSeconds);
+    const mins = Math.floor(totalSecs / 60);
+    const secs = totalSecs % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
+
+  /**
+   * Inicializa os controles e proteções de retenção VSL em um player
+   * @param {Object} options
+   * @param {HTMLElement} options.container Container .vsl-player
+   * @param {HTMLVideoElement} options.video Elemento <video>
+   * @param {boolean} options.allowRewind Se permite voltar (false no principal, true nos curtos)
+   */
+  const initVslController = ({ container, video, allowRewind = false }) => {
+    if (!container || !video) return null;
+
+    let maxWatchedTime = 0;
+    let lastReportedTime = 0;
+
+    // Referências aos controles
+    const playBtn = container.querySelector('.vsl-btn--play');
+    const volBtn = container.querySelector('.vsl-btn--vol');
+    const volSlider = container.querySelector('.vsl-volume-slider');
+    const fsBtn = container.querySelector('.vsl-btn--fullscreen');
+    const rewindBtn = container.querySelector('.vsl-btn--rewind');
+    const timeCurrent = container.querySelector('.vsl-time__current');
+    const timeDuration = container.querySelector('.vsl-time__duration');
+    const progressBar = container.querySelector('.vsl-progress__bar');
+    const progressBuffer = container.querySelector('.vsl-progress__buffer');
+    const progressContainer = container.querySelector('.vsl-progress');
+
+    // 1. Proteção: Travar velocidade em 1x e impedir download
+    video.playbackRate = 1.0;
+    video.controls = false;
+    video.setAttribute('disablepictureinpicture', '');
+    video.setAttribute('controlslist', 'nodownload noplaybackrate nofullscreen');
+
+    // Desativa menu de contexto (botão direito) para não exibir "Salvar vídeo" ou velocidade
+    container.addEventListener('contextmenu', (e) => e.preventDefault());
+    video.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // 2. Play / Pause
+    const togglePlay = () => {
+      if (video.paused || video.ended) {
+        container.classList.add('is-active');
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    };
+
+    if (playBtn) playBtn.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+    video.addEventListener('click', togglePlay);
+
+    video.addEventListener('play', () => {
+      container.classList.add('is-playing', 'is-active');
+      container.classList.remove('is-paused');
+    });
+
+    video.addEventListener('pause', () => {
+      container.classList.remove('is-playing');
+      container.classList.add('is-paused');
+    });
+
+    video.addEventListener('ended', () => {
+      container.classList.remove('is-playing');
+      container.classList.add('is-paused');
+    });
+
+    // 3. Bloqueio estrito de avanço (Anti-Skip) e monitoramento de tempo
+    video.addEventListener('timeupdate', () => {
+      const current = video.currentTime;
+      const duration = video.duration || 0;
+
+      // Atualiza o progresso assistido legítimo
+      if (current > maxWatchedTime && Math.abs(current - maxWatchedTime) < 2.5) {
+        maxWatchedTime = current;
+      }
+      lastReportedTime = current;
+
+      if (timeCurrent) timeCurrent.textContent = formatTime(current);
+      if (timeDuration && duration) timeDuration.textContent = formatTime(duration);
+
+      if (progressBar && duration) {
+        const pct = Math.min(100, Math.max(0, (current / duration) * 100));
+        progressBar.style.width = pct + '%';
+      }
+
+      // Buffer
+      if (progressBuffer && duration && video.buffered.length > 0) {
+        try {
+          const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+          progressBuffer.style.width = Math.min(100, (bufferedEnd / duration) * 100) + '%';
+        } catch (_) {}
+      }
+    });
+
+    // Se o navegador ou usuário tentar pular para a frente: BLOQUEIA
+    video.addEventListener('seeking', () => {
+      if (video.currentTime > maxWatchedTime + 0.3) {
+        video.currentTime = maxWatchedTime;
+      } else if (!allowRewind && video.currentTime < lastReportedTime - 0.5) {
+        // No principal, se não permitir voltar, mantém
+        video.currentTime = lastReportedTime;
+      }
+    });
+
+    // Impede alterar taxa de velocidade (2x, etc.)
+    video.addEventListener('ratechange', () => {
+      if (video.playbackRate !== 1.0) {
+        video.playbackRate = 1.0;
+      }
+    });
+
+    // 4. Barra de progresso interativa
+    if (progressContainer) {
+      if (allowRewind) {
+        progressContainer.classList.add('can-rewind');
+        progressContainer.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const rect = progressContainer.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+          const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+          const targetTime = ratio * (video.duration || 0);
+
+          // Apenas permite voltar para trás de onde já assistiu
+          if (targetTime <= maxWatchedTime) {
+            video.currentTime = targetTime;
+          } else {
+            // Tentativa de pular pra frente: ignora e trava no tempo atual
+            video.currentTime = Math.min(video.currentTime, maxWatchedTime);
+          }
+        });
+      } else {
+        // No principal: barra apenas informativa, cliques não pulam
+        progressContainer.addEventListener('click', (e) => e.stopPropagation());
+      }
+    }
+
+    // 5. Botão de Voltar 10s (quando permitido)
+    if (rewindBtn && allowRewind) {
+      rewindBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.currentTime = Math.max(0, video.currentTime - 10);
+      });
+    }
+
+    // 6. Volume e Mute
+    if (volBtn) {
+      volBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        container.classList.toggle('is-muted', video.muted);
+        if (volSlider) volSlider.value = video.muted ? 0 : (video.volume || 1);
+      });
+    }
+
+    if (volSlider) {
+      volSlider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        const val = parseFloat(volSlider.value);
+        video.volume = val;
+        video.muted = (val === 0);
+        container.classList.toggle('is-muted', video.muted);
+      });
+      volSlider.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    // 7. Tela Cheia (Fullscreen cross-browser)
+    const toggleFullscreen = () => {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        if (container.requestFullscreen) {
+          container.requestFullscreen().catch(() => {
+            if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+          });
+        } else if (container.webkitRequestFullscreen) {
+          container.webkitRequestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      }
+    };
+
+    if (fsBtn) fsBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleFullscreen(); });
+
+    const handleFsChange = () => {
+      const isFs = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+      container.classList.toggle('is-fullscreen', isFs);
+    };
+
+    document.addEventListener('fullscreenchange', handleFsChange);
+    document.addEventListener('webkitfullscreenchange', handleFsChange);
+
+    // 8. Atalhos de Teclado no Player (bloqueia avanço)
+    container.addEventListener('keydown', (e) => {
+      // Bloqueia teclas de pular para frente
+      if (['ArrowRight', 'KeyL', 'PageDown'].includes(e.code) || e.key === '>') {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      if (e.code === 'Space' || e.code === 'KeyK') {
+        e.preventDefault();
+        togglePlay();
+      } else if (e.code === 'KeyM') {
+        e.preventDefault();
+        if (volBtn) volBtn.click();
+      } else if (e.code === 'KeyF') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.code === 'ArrowLeft' && allowRewind) {
+        e.preventDefault();
+        video.currentTime = Math.max(0, video.currentTime - 10);
+      }
+    });
+
+    return {
+      play: () => {
+        container.classList.add('is-active');
+        return video.play();
+      },
+      pause: () => video.pause(),
+      togglePlay
+    };
+  };
+
+  // --------------------------------------------------------------------------
+  // A. Inicializa o Player Inline da Apresentação (direto no site)
+  // --------------------------------------------------------------------------
+  const mainWrapper = document.getElementById('mainVideoPlayerWrapper');
+  const mainVideo = document.getElementById('mainInlineVideo');
+  const mainCoverBtn = document.getElementById('mainVideoButton');
+  const watchHeroLink = document.getElementById('watchHeroLink');
+
+  if (mainWrapper && mainVideo) {
+    const mainData = (cfg.videos && cfg.videos.apresentacao) || {};
+    const mainActiveUrl = mainData.videoUrl || mainData.demoVideoUrl || 'assets/videos/apresentacao-demo.mp4';
+    
+    mainVideo.src = mainActiveUrl;
+    if (mainData.demoPosterUrl) mainVideo.poster = mainData.demoPosterUrl;
+
+    const mainController = initVslController({
+      container: mainWrapper,
+      video: mainVideo,
+      allowRewind: false // Não pode voltar nem avançar (passa o vídeo continuamente)
+    });
+
+    // Clique na capa do vídeo inicia diretamente no site
+    if (mainCoverBtn) {
+      mainCoverBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        mainWrapper.classList.add('is-active');
+        if (mainController) mainController.play();
+      });
+    }
+
+    // Link da Hero "Assistir apresentação" rola até a seção e dá play inline
+    if (watchHeroLink) {
+      watchHeroLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetSection = document.getElementById('presentation');
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        mainWrapper.classList.add('is-active');
+        setTimeout(() => {
+          if (mainController) mainController.play();
+        }, 400);
+      });
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // B. Seção "Conteúdos em Vídeo" (Vídeos Curtos com abertura em Janela Modal)
+  // --------------------------------------------------------------------------
+  const mediaCards = document.querySelectorAll('.media-card[data-video]');
   const videoModalTitle = document.getElementById('videoModalTitle');
   const videoScript = document.getElementById('videoScript');
   const videoBox = document.getElementById('videoBox');
   const modalVideoPlayer = document.getElementById('modalVideoPlayer');
   const videoDemoLabel = document.getElementById('videoDemoLabel');
 
-  videoCards.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const key = btn.dataset.video;
+  mediaCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.video;
       const data = (cfg.videos && cfg.videos[key]) || {
-        title: 'Apresentação da mentoria',
-        steps: ['Conteúdo em produção.']
+        title: 'Conteúdo da mentoria',
+        steps: ['Gravação em produção.']
       };
 
       if (videoModalTitle) videoModalTitle.textContent = data.title;
 
-      // Qual URL usar: real > demo > nenhuma
       const activeUrl = data.videoUrl || data.demoVideoUrl || null;
       const isDemo = !data.videoUrl && !!data.demoVideoUrl;
 
-      // Atualiza label de demonstração
       if (videoDemoLabel) {
         if (isDemo && data.demoLabel) {
           videoDemoLabel.textContent = '⚡ ' + data.demoLabel;
@@ -198,14 +484,12 @@
       }
 
       if (activeUrl && modalVideoPlayer) {
-        // Exibe player funcional
         modalVideoPlayer.style.display = 'block';
         if (videoBox) videoBox.style.display = 'none';
 
         if (activeUrl.includes('youtube.com') || activeUrl.includes('youtu.be') || activeUrl.includes('vimeo.com')) {
-          // Embed iframe
           modalVideoPlayer.innerHTML = `
-            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:14px 0;">
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;margin:14px 0;">
               <iframe
                 src="${activeUrl}"
                 style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
@@ -216,24 +500,87 @@
             </div>
           `;
         } else {
-          // Arquivo MP4 (local ou CDN)
-          const posterAttr = data.demoPosterUrl ? ` poster="${data.demoPosterUrl}"` : '';
+          // Injeta player VSL customizado no modal (com botão -10s, sem avançar, sem download, sem 2x)
+          const posterAttr = data.demoPosterUrl ? `poster="${data.demoPosterUrl}"` : '';
           modalVideoPlayer.innerHTML = `
-            <video
-              controls
-              preload="metadata"
-              playsinline
-              ${posterAttr}
-              style="width:100%;border-radius:12px;margin:14px 0;background:#0a0a14;max-height:60vh;"
-              aria-label="${data.title}"
-            >
-              <source src="${activeUrl}" type="video/mp4">
-              Seu navegador não suporta a reprodução deste vídeo.
-            </video>
+            <div class="vsl-player vsl-player--modal is-active" id="modalVslPlayer">
+              <video
+                class="vsl-video"
+                id="modalVslVideo"
+                src="${activeUrl}"
+                ${posterAttr}
+                playsinline
+                webkit-playsinline
+                preload="metadata"
+                disablepictureinpicture
+                controlslist="nodownload noplaybackrate nofullscreen"
+                aria-label="${data.title}"
+              ></video>
+
+              <div class="vsl-controls" aria-hidden="true">
+                <!-- Barra de progresso VSL: permite voltar, bloqueia pular para frente -->
+                <div class="vsl-progress can-rewind" title="Clique para voltar">
+                  <div class="vsl-progress__buffer"></div>
+                  <div class="vsl-progress__bar"></div>
+                </div>
+
+                <div class="vsl-controls__bar">
+                  <div class="vsl-controls__left">
+                    <button type="button" class="vsl-btn vsl-btn--play" aria-label="Reproduzir ou pausar">
+                      <svg class="vsl-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5 20 12 7 19.5z"/></svg>
+                      <svg class="vsl-icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+                    </button>
+
+                    <button type="button" class="vsl-btn vsl-btn--rewind" aria-label="Voltar 10 segundos">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                      10s
+                    </button>
+
+                    <div class="vsl-time">
+                      <span class="vsl-time__current">00:00</span>
+                      <span class="vsl-time__sep">/</span>
+                      <span class="vsl-time__duration">--:--</span>
+                    </div>
+                  </div>
+
+                  <div class="vsl-controls__right">
+                    <div class="vsl-volume-wrap">
+                      <button type="button" class="vsl-btn vsl-btn--vol" aria-label="Silenciar">
+                        <svg class="vsl-icon-vol-high" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        <svg class="vsl-icon-vol-mute" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg>
+                      </button>
+                      <input type="range" class="vsl-volume-slider" min="0" max="1" step="0.05" value="1" aria-label="Ajustar volume">
+                    </div>
+
+                    <button type="button" class="vsl-btn vsl-btn--fullscreen" aria-label="Ver em tela cheia">
+                      <svg class="vsl-icon-fs-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                      <svg class="vsl-icon-fs-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14h6m0 0v6m0-6-7 7m17-11h-6m0 0V4m0 6 7-7m-7 17v-6m0 0h6m-6 0 7 7M10 4v6m0 0H4m6 0L3 3"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vsl-center-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5 20 12 7 19.5z"/></svg>
+              </div>
+            </div>
           `;
+
+          const modalContainer = modalVideoPlayer.querySelector('#modalVslPlayer');
+          const modalVid = modalVideoPlayer.querySelector('#modalVslVideo');
+          
+          const modalCtrl = initVslController({
+            container: modalContainer,
+            video: modalVid,
+            allowRewind: true // Nos vídeos curtos: pode voltar (botão 10s e barra)
+          });
+
+          // Inicia a reprodução
+          setTimeout(() => {
+            if (modalCtrl) modalCtrl.play().catch(() => {});
+          }, 200);
         }
       } else {
-        // Sem vídeo: exibe estrutura editorial sugerida
         if (modalVideoPlayer) modalVideoPlayer.style.display = 'none';
         if (videoBox) videoBox.style.display = 'block';
 
@@ -251,16 +598,6 @@
       openModal(videoOverlay);
     });
   });
-
-  // "Assistir apresentação" na Hero → abre o player principal
-  const watchHeroLink = document.getElementById('watchHeroLink');
-  if (watchHeroLink) {
-    watchHeroLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      const heroVideoBtn = document.getElementById('mainVideoButton');
-      if (heroVideoBtn) heroVideoBtn.click();
-    });
-  }
 
 
   /* ==========================================================================

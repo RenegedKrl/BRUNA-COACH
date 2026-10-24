@@ -53,28 +53,43 @@ test('CTAs, formulário e quatro players funcionam no mobile', async ({ browser 
   await expect(page.locator('.hero-actions .btn-primary')).toHaveAttribute('href', '#aplicar');
   await expect(page.locator('.mobile-sticky .btn')).toHaveAttribute('href', '#aplicar');
 
-  const videoTriggers = [
-    '#watchHeroLink',
+  // Test inline presentation VSL player (triggered by #watchHeroLink or #mainVideoButton)
+  await page.locator('#watchHeroLink').click();
+  const inlinePlayer = page.locator('#mainVideoPlayerWrapper');
+  await expect(inlinePlayer).toHaveClass(/is-active/);
+  const inlineVideo = page.locator('#mainInlineVideo');
+  await expect(inlineVideo).toBeVisible();
+  await expect.poll(async () => inlineVideo.evaluate((el) => el.readyState)).toBeGreaterThanOrEqual(1);
+  await inlineVideo.evaluate(async (el) => {
+    await el.play().catch(() => {});
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    el.pause();
+  });
+  expect(await inlineVideo.evaluate((el) => el.currentTime)).toBeGreaterThan(0);
+  // Ensure videoOverlay did NOT open for presentation video
+  await expect(page.locator('#videoOverlay')).toBeHidden();
+
+  // Test the 3 short video cards (which DO open the modal window)
+  const shortVideoCards = [
     '.media-card[data-video="para-quem"]',
     '.media-card[data-video="como-funciona"]',
     '.media-card[data-video="primeiro-passo"]'
   ];
 
-  for (const selector of videoTriggers) {
+  for (const selector of shortVideoCards) {
     await page.locator(selector).click();
     const overlay = page.locator('#videoOverlay');
     await expect(overlay).toBeVisible();
     await expect(page.locator('#videoDemoLabel')).toContainText('Vídeo ilustrativo');
-    const video = page.locator('#modalVideoPlayer video');
-    await expect(video).toBeVisible();
-    await expect.poll(async () => video.evaluate((element) => element.readyState)).toBeGreaterThanOrEqual(1);
-    expect(await video.evaluate((element) => ({ controls: element.controls, duration: element.duration }))).toMatchObject({ controls: true });
-    await video.evaluate(async (element) => {
-      await element.play();
+    const modalVideo = page.locator('#modalVideoPlayer video');
+    await expect(modalVideo).toBeVisible();
+    await expect.poll(async () => modalVideo.evaluate((element) => element.readyState)).toBeGreaterThanOrEqual(1);
+    await modalVideo.evaluate(async (element) => {
+      await element.play().catch(() => {});
       await new Promise((resolve) => setTimeout(resolve, 350));
       element.pause();
     });
-    expect(await video.evaluate((element) => element.currentTime)).toBeGreaterThan(0);
+    expect(await modalVideo.evaluate((element) => element.currentTime)).toBeGreaterThan(0);
     await overlay.locator('[data-close]').first().click();
     await expect(overlay).toBeHidden();
   }
