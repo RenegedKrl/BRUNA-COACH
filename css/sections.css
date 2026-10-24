@@ -1162,8 +1162,11 @@
   }
 
   .demobar {
-    font-size: 11px;
-    padding: 7px 14px;
+    font-size: 10px;
+    padding: 6px 12px;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    text-align: center;
   }
 
   .nav {
@@ -1219,65 +1222,70 @@
 
   .hero {
     min-height: auto;
+    overflow: hidden;
   }
 
   .hero-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 0;
-    padding: 42px 0 0;
+    padding: 34px 0 10px;
     min-height: 0;
-    align-items: start;
+    align-items: stretch;
   }
 
   .hero-copy {
-    display: contents;
-  }
-
-  .hero-photo-col {
-    order: 3;
-    margin-top: 8px;
-    margin-bottom: -34px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-label {
-    order: 1;
-    font-size: 12px;
+    font-size: 11.5px;
     letter-spacing: 0.1em;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .hero h1 {
-    order: 2;
-    font-size: clamp(48px, 12vw, 73px);
+    font-size: clamp(32px, 8.5vw, 42px);
     max-width: 100%;
-    letter-spacing: -0.072em;
-    line-height: 1.0;
+    letter-spacing: -0.045em;
+    line-height: 1.1;
+    margin: 0 0 16px;
   }
 
   .hero-desc {
-    order: 4;
-    position: relative;
-    z-index: 4;
-    font-size: 16px;
-    line-height: 1.7;
-    margin: 20px 0 24px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0 0 22px;
     max-width: 100%;
+    position: static;
   }
 
   .hero-actions {
-    order: 5;
-    gap: 14px;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
+    width: 100%;
   }
 
   .hero-actions .btn-primary {
     width: 100%;
+    min-height: 52px;
+    font-size: 15px;
+    font-weight: 750;
+    justify-content: center;
   }
 
   .hero-action-secondary {
     font-size: 14px;
     justify-content: center;
+    padding: 8px 0;
   }
 
   .hero-scroll {
@@ -1285,52 +1293,79 @@
   }
 
   .proof-inline {
-    order: 6;
-    margin-top: 22px;
-    padding-top: 18px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
 
-  /* Foto da Bruna no Mobile */
+  /* Foto da Bruna no Mobile: Posicionada harmoniosamente abaixo da copy */
   .hero-photo-col {
-    min-height: 340px;
+    margin-top: 32px;
+    margin-bottom: 0;
+    min-height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    overflow: visible;
+    width: 100%;
   }
 
   .bruna-photo {
     max-width: 100%;
-    width: 84%;
+    width: 78%;
+    max-width: 290px;
     margin: 0 auto;
-    filter: drop-shadow(0 0 40px rgba(152, 121, 255, 0.4)) drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+    display: block;
+    filter: drop-shadow(0 0 35px rgba(152, 121, 255, 0.35)) drop-shadow(0 15px 25px rgba(0,0,0,0.5));
   }
 
   .photo-glow-ring--outer {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .photo-glow-ring--inner {
-    width: 190px;
-    height: 190px;
+    width: 160px;
+    height: 160px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .photo-ambient {
-    width: 250px;
-    height: 60px;
+    width: 220px;
+    height: 50px;
+    bottom: -10px;
   }
 
   .photo-badge {
     top: auto;
-    bottom: 30px;
-    right: 10px;
-    padding: 10px 14px;
+    bottom: 16px;
+    right: 8px;
+    padding: 9px 13px;
+    background: rgba(18, 16, 32, 0.88);
+    border: 1px solid rgba(169, 146, 238, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
     animation: none;
   }
 
   .photo-badge__icon {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .photo-badge__text {
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 1.25;
   }
 
   .photo-line-decor {
@@ -1338,11 +1373,11 @@
   }
 
   .hero-glow--right {
-    width: 400px;
-    height: 400px;
-    right: -150px;
-    top: -60px;
-    filter: blur(60px);
+    width: 320px;
+    height: 320px;
+    right: -100px;
+    top: -40px;
+    filter: blur(50px);
   }
 
   .hero-glow--left {
@@ -1350,20 +1385,25 @@
   }
 
   .presentation {
-    padding: 85px 0 95px;
+    padding: 60px 0 68px;
   }
 
   .presentation-grid {
-    gap: 30px;
+    gap: 24px;
   }
 
   .presentation-copy .section-title {
-    font-size: clamp(38px, 10vw, 50px);
+    font-size: clamp(30px, 8vw, 40px);
   }
 
   .presentation-copy > p {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  .demo-notice {
+    display: none;
   }
 
   .presentation-player {
@@ -1443,25 +1483,25 @@
   }
 
   .section-title {
-    font-size: clamp(28px, 7.5vw, 38px);
+    font-size: clamp(28px, 7.5vw, 36px);
     letter-spacing: -0.04em;
     line-height: 1.14;
-    margin: 16px 0 18px;
+    margin: 14px 0 16px;
   }
 
   .problems {
-    padding: 85px 0 95px;
+    padding: 60px 0 68px;
   }
 
   .problems-head {
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
   }
 
   .problems-head .section-intro {
-    margin-top: 14px;
-    font-size: 16px;
-    line-height: 1.7;
+    margin-top: 12px;
+    font-size: 15.5px;
+    line-height: 1.65;
   }
 
   .problem-grid {
@@ -1471,31 +1511,33 @@
 
   .problem-card {
     min-height: 0;
-    padding: 28px 26px 30px;
+    padding: 24px 20px 26px;
+    border-radius: 18px;
   }
 
   .problem-icon {
-    margin-top: 19px;
-    font-size: 30px;
+    margin-top: 14px;
+    font-size: 28px;
   }
 
   .problem-card h3 {
-    font-size: 23px;
-    margin-top: 14px;
+    font-size: 20px;
+    margin-top: 12px;
+    line-height: 1.25;
   }
 
   .problem-card p {
-    font-size: 15px;
-    line-height: 1.65;
+    font-size: 14.5px;
+    line-height: 1.6;
   }
 
   .center-link {
     font-size: 14px;
-    margin-top: 25px;
+    margin-top: 22px;
   }
 
   .manifesto {
-    padding: 75px 0;
+    padding: 56px 0;
   }
 
   .manifesto-inner {
@@ -1503,29 +1545,30 @@
   }
 
   .manifesto h2 {
-    font-size: 38px;
-    margin-bottom: 20px;
+    font-size: clamp(28px, 7.5vw, 36px);
+    line-height: 1.2;
+    margin-bottom: 16px;
   }
 
   .manifesto p {
     font-size: 15px;
-    line-height: 1.7;
-    max-width: 360px;
+    line-height: 1.65;
+    max-width: 100%;
   }
 
   .method {
-    padding: 85px 0 95px;
+    padding: 60px 0 68px;
   }
 
   .method-head {
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
   }
 
   .method-head p {
-    font-size: 16px;
-    line-height: 1.7;
-    margin: 20px 0 0;
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin: 14px 0 0;
   }
 
   .method-grid {
@@ -1535,21 +1578,22 @@
 
   .method-card {
     min-height: 0;
-    padding: 28px 26px 30px;
+    padding: 24px 20px 26px;
+    border-radius: 18px;
   }
 
   .method-card .mark {
-    margin: 20px 0 20px;
-    font-size: 37px;
+    margin: 14px 0 14px;
+    font-size: 32px;
   }
 
   .method-card h3 {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .method-card p {
-    font-size: 15px;
-    line-height: 1.65;
+    font-size: 14.5px;
+    line-height: 1.6;
   }
 
   .method-cta .btn {
@@ -1557,56 +1601,65 @@
   }
 
   .spotlight {
-    padding: 85px 0 95px;
+    padding: 60px 0 68px;
   }
 
   .spot-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
 
   .spotlight p {
-    font-size: 16px;
-    line-height: 1.75;
+    font-size: 15.5px;
+    line-height: 1.7;
   }
 
   .spotlight li {
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.55;
   }
 
   .portrait-frame {
-    height: 410px;
+    height: 350px;
+    border-radius: 20px;
   }
 
   .portrait-glyph {
-    font-size: 220px;
+    font-size: 180px;
   }
 
   .portrait-layer strong {
-    font-size: 29px;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .portrait-layer span {
+    font-size: 11px;
+    letter-spacing: 0.12em;
   }
 
   .portrait-sticker {
-    width: 106px;
-    height: 106px;
-    right: 1px;
-    font-size: 11px;
+    width: 78px;
+    height: 78px;
+    right: 12px;
+    top: 12px;
+    font-size: 8.5px;
+    padding: 8px;
   }
 
   .media {
-    padding: 85px 0;
+    padding: 60px 0 68px;
   }
 
   .media-head {
     display: block;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 
   .media-head p {
-    font-size: 16px;
-    line-height: 1.7;
-    margin-top: 12px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-top: 10px;
   }
 
   .media-grid {
@@ -1624,14 +1677,15 @@
   }
 
   .media-card {
-    flex: 0 0 min(78vw, 310px);
+    flex: 0 0 min(76vw, 290px);
     aspect-ratio: 9 / 16;
     scroll-snap-align: center;
+    border-radius: 18px;
   }
 
   .media-card .media-label {
-    font-size: 21px;
-    max-width: 240px;
+    font-size: 19px;
+    max-width: 220px;
   }
 
   .media-card .media-play {
@@ -1644,42 +1698,58 @@
   }
 
   .reputation {
-    padding: 85px 0;
+    padding: 60px 0 68px;
   }
 
   .reputation-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
+  }
+
+  .reputation-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .reputation strong.number {
-    font-size: clamp(92px, 29vw, 122px);
-    margin-top: 23px;
+    font-size: 54px;
+    line-height: 1.0;
+    margin: 12px 0 10px;
+    display: block;
+    width: 100%;
   }
 
   .reputation h2 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .reputation p {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 15.5px;
+    line-height: 1.65;
   }
 
   .google-panel {
-    padding: 24px 18px;
+    padding: 20px 16px;
+    border-radius: 18px;
   }
 
   .reputation-actions {
     flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
   }
 
   .reputation-actions .btn {
     width: 100%;
+    min-height: 46px;
+    font-size: 14px;
+    justify-content: center;
   }
 
   .review-card {
     padding: 16px 14px;
+    border-radius: 14px;
   }
 
   .review-card__header {
@@ -1698,66 +1768,74 @@
   }
 
   .faq {
-    padding: 85px 0;
+    padding: 60px 0 68px;
   }
 
   .faq-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 26px;
   }
 
   .faq-sub {
-    font-size: 16px;
-    line-height: 1.7;
-    max-width: 370px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    max-width: 100%;
   }
 
   .faq-item button {
-    font-size: 16px;
+    font-size: 15.5px;
+    padding: 18px 0;
   }
 
   .faq-content {
-    font-size: 15px;
-    line-height: 1.75;
+    font-size: 14.5px;
+    line-height: 1.65;
   }
 
   .lead {
-    padding: 85px 0 95px;
+    padding: 60px 0 74px;
   }
 
   .lead-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 26px;
   }
 
   .lead-intro {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 15.5px;
+    line-height: 1.65;
   }
 
   .lead-points {
-    margin-top: 26px;
+    margin-top: 22px;
   }
 
   .lead-points span {
-    font-size: 15px;
+    font-size: 14.5px;
+  }
+
+  .confidentiality-badge {
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin-bottom: 22px;
   }
 
   .form-card {
-    padding: 30px 24px;
+    padding: 26px 18px 28px;
+    border-radius: 20px;
   }
 
   .form-card h3 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .form-card > p {
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   .footer {
-    padding: 40px 0 108px;
+    padding: 36px 0 100px;
   }
 
   .footer-row {
@@ -1766,7 +1844,7 @@
 
   .footer-right {
     text-align: left;
-    margin-top: 28px;
+    margin-top: 24px;
   }
 
   /* CTA Fixo no Celular */
@@ -1782,11 +1860,11 @@
     -webkit-backdrop-filter: blur(18px);
     padding: 12px 18px max(12px, env(safe-area-inset-bottom));
     box-shadow: 0 -1px rgba(255, 255, 255, 0.14);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
   }
 
   .mobile-sticky.is-hidden {
-    transform: translateY(100%);
+    transform: translateY(110%);
     opacity: 0;
     pointer-events: none;
   }
@@ -1797,6 +1875,7 @@
     min-height: 52px;
     font-size: 15px;
     font-weight: 750;
+    justify-content: center;
   }
 
   .modal {
@@ -1811,7 +1890,8 @@
 /* Small Mobile Screens (<= 380px, e.g. 320px - 375px) */
 @media (max-width: 380px) {
   .hero h1 {
-    font-size: 47px;
+    font-size: 31px;
+    line-height: 1.12;
   }
 
   .nav .btn {
@@ -1820,20 +1900,20 @@
   }
 
   .hero-desc {
-    font-size: 15px;
+    font-size: 14.5px;
   }
 
   .video-bottom strong {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .section-title {
-    font-size: 28px;
+    font-size: 26px;
     line-height: 1.15;
   }
 
   .hero-grid {
-    padding-top: 47px;
+    padding-top: 28px;
   }
 
   .video-frame {
@@ -2158,28 +2238,39 @@
     padding: 24px 0;
   }
   .authority-bar__inner {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 12px;
   }
   .authority-item {
     border-left: 2px solid #846AFF;
-    padding-left: 12px;
+    padding-left: 10px;
+  }
+  .authority-item__val {
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 3px;
+  }
+  .authority-item__desc {
+    font-size: 11px;
+    line-height: 1.4;
   }
   .differentiation {
-    padding: 85px 0 95px;
+    padding: 60px 0 68px;
   }
   .diff-card {
-    padding: 28px 22px;
+    padding: 24px 18px;
+    border-radius: 18px;
   }
   .spotlight-lead {
-    font-size: 16px;
+    font-size: 15.5px;
     line-height: 1.6;
-    margin: 14px 0 20px;
+    margin: 12px 0 18px;
   }
   .spotlight-metrics {
     grid-template-columns: 1fr;
     gap: 10px;
-    margin: 18px 0 24px;
+    margin: 16px 0 22px;
   }
   .spot-metric-card {
     display: flex;
