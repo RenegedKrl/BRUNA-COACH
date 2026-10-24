@@ -1,5 +1,5 @@
 /**
- * BRUNA — Mentoria de Carreira e Executiva
+ * BRUNA: Mentoria de Carreira e Executiva
  * JavaScript Principal: Interações, Modais, Accordion, Mobile Menu e Validação
  */
 
@@ -776,5 +776,5 @@
     }
   }
 
-  console.log('Landing page Bruna — Mentoria de Carreira carregada com sucesso.');
+  console.log('Landing page Bruna: Mentoria de Carreira carregada com sucesso.');
 })();

@@ -1,5 +1,5 @@
 /**
- * BRUNA — Mentoria de Carreira e Executiva
+ * BRUNA: Mentoria de Carreira e Executiva
  * Arquivo Central de Configurações v2.0
  *
  * ═══════════════════════════════════════════════════════
@@ -30,11 +30,11 @@ window.BRUNA_CONFIG = {
   // Informações da Mentora
   mentor: {
     name: "Bruna",
-    fullName: "Bruna — Mentoria de Carreira e Executiva",
+    fullName: "Bruna, Mentoria de Carreira e Executiva",
     title: "Mentora de Carreira & Executiva",
     brandEyebrow: "MENTORIA DE CARREIRA & EXECUTIVA",
     shortBio: "Acompanhamento estratégico para profissionais que querem enxergar novas possibilidades, tomar decisões com mais clareza e construir o próximo capítulo da carreira de forma intencional.",
-    // Foto real da Bruna — imagem com fundo transparente e efeitos violeta
+    // Foto real da Bruna: imagem com fundo transparente e efeitos violeta
     photoUrl: "assets/images/bruna-hero.png",
     photoAlt: "Bruna, Mentora de Carreira & Executiva, em vestido vermelho com microfone"
   },
@@ -62,7 +62,7 @@ window.BRUNA_CONFIG = {
   // isDemoVideo: false → produção real da Bruna (sem aviso)
   //
   // Vídeos demo usam CDN do Mixkit (licença gratuita para uso comercial)
-  // Fonte: https://mixkit.co/license/ — Mixkit Free License
+  // Fonte: https://mixkit.co/license/ (Mixkit Free License)
   // ═══════════════════════════════════════════════════════
   videos: {
     "apresentacao": {
@@ -71,12 +71,12 @@ window.BRUNA_CONFIG = {
       subtitle: "Uma conversa sobre o seu futuro.",
       // ↓ Substitua pela URL ou arquivo real da Bruna quando disponível
       videoUrl: null,
-      // Vídeo demo ilustrativo local (Mixkit — licença gratuita)
+      // Vídeo demo ilustrativo local (Mixkit: licença gratuita)
       demoVideoUrl: "assets/videos/apresentacao-demo.mp4",
       demoPosterUrl: "assets/images/video-posters/apresentacao-demo.jpg",
       sourcePage: "https://mixkit.co/free-stock-video/business-people-at-work-meeting-4809/",
       isDemoVideo: true,
-      demoLabel: "Vídeo ilustrativo — será substituído pela apresentação real da Bruna.",
+      demoLabel: "Vídeo ilustrativo: apresentação sobre o formato da mentoria.",
       steps: [
         "Apresentação breve da Bruna e da sua experiência.",
         "Quem costuma procurar orientação de carreira e por quê.",
@@ -93,7 +93,7 @@ window.BRUNA_CONFIG = {
       demoPosterUrl: "assets/images/video-posters/mentoria-demo-01.jpg",
       sourcePage: "https://mixkit.co/free-stock-video/professional-woman-working-in-an-office-42664/",
       isDemoVideo: true,
-      demoLabel: "Vídeo ilustrativo — será substituído pela gravação real da Bruna.",
+      demoLabel: "Vídeo ilustrativo: perfis atendidos pela mentoria executiva.",
       steps: [
         "Situações profissionais em que a mentoria pode ajudar.",
         "Exemplos de desafios recorrentes, sem expor clientes.",
@@ -109,7 +109,7 @@ window.BRUNA_CONFIG = {
       demoPosterUrl: "assets/images/video-posters/mentoria-demo-02.jpg",
       sourcePage: "https://mixkit.co/free-stock-video/business-partners-meeting-4813/",
       isDemoVideo: true,
-      demoLabel: "Vídeo ilustrativo — será substituído pela gravação real da Bruna.",
+      demoLabel: "Vídeo ilustrativo: dinâmica dos encontros e metodologia.",
       steps: [
         "Explicar o formato real dos encontros e a duração.",
         "Mostrar o que acontece antes, durante e depois de cada encontro.",
@@ -125,7 +125,7 @@ window.BRUNA_CONFIG = {
       demoPosterUrl: "assets/images/video-posters/mentoria-demo-03.jpg",
       sourcePage: "https://mixkit.co/free-stock-video/presentation-during-a-work-team-meeting-42666/",
       isDemoVideo: true,
-      demoLabel: "Vídeo ilustrativo — será substituído pela gravação real da Bruna.",
+      demoLabel: "Vídeo ilustrativo: primeiros passos do alinhamento.",
       steps: [
         "Convidar a pessoa a contar seu momento de carreira.",
         "Explicar como funciona a conversa inicial e a disponibilidade.",
