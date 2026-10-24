@@ -1666,11 +1666,29 @@
   }
 
   .google-panel {
-    padding: 32px 26px;
+    padding: 24px 18px;
   }
 
-  .google-quote {
-    font-size: 25px;
+  .reputation-actions {
+    flex-direction: column;
+  }
+
+  .reputation-actions .btn {
+    width: 100%;
+  }
+
+  .review-card {
+    padding: 16px 14px;
+  }
+
+  .review-card__header {
+    gap: 10px;
+  }
+
+  .google-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .faq {
