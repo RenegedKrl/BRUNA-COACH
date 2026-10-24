@@ -13,12 +13,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  min-height: 54px;
-  padding: 16px 25px;
+  gap: 16px;
+  min-height: 56px;
+  padding: 16px 28px;
   border-radius: var(--radius-sm);
-  font-size: 12px;
-  font-weight: 750;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 1.25;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
               box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
@@ -124,12 +124,12 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 25px;
-  padding: 6px 16px;
+  min-height: 36px;
+  padding: 8px 18px;
   background: var(--demobar-bg);
   color: var(--demobar-text);
-  font-size: 10px;
-  letter-spacing: 0.05em;
+  font-size: 12px;
+  letter-spacing: 0.04em;
   font-weight: 600;
   z-index: 60;
   position: relative;
@@ -244,9 +244,9 @@
 .vid-tag {
   border: 1px solid rgba(255, 255, 255, 0.22);
   background: rgba(12, 9, 23, 0.52);
-  padding: 10px 13px;
+  padding: 10px 14px;
   border-radius: 100px;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   backdrop-filter: blur(8px);
@@ -254,7 +254,7 @@
 }
 
 .video-counter {
-  font-size: 10px;
+  font-size: 12px;
   color: #E1DBE9;
   letter-spacing: 0.16em;
   font-weight: 600;
@@ -316,11 +316,11 @@
 }
 
 .video-bottom strong {
-  font-size: 30px;
-  line-height: 1.06;
-  letter-spacing: -0.055em;
+  font-size: 32px;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
   display: block;
-  max-width: 270px;
+  max-width: 290px;
   font-weight: 700;
 }
 
@@ -328,9 +328,9 @@
   display: block;
   text-transform: uppercase;
   color: #D3C8DF;
-  margin-top: 12px;
-  letter-spacing: 0.13em;
-  font-size: 9px;
+  margin-top: 10px;
+  letter-spacing: 0.12em;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -366,7 +366,7 @@
 }
 
 .frame-floating small {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
   color: #4B3B60;
 }
@@ -379,10 +379,10 @@
   background: #211A36;
   border: 1px solid rgba(143, 124, 186, 0.47);
   border-radius: 100px;
-  padding: 12px 16px;
-  font-size: 10px;
+  padding: 12px 18px;
+  font-size: 12px;
   font-weight: 750;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   z-index: 4;
   transform: rotate(7deg);
@@ -398,7 +398,7 @@
   background: #B9A4F7;
   color: #191225;
   overflow: hidden;
-  padding: 17px 0;
+  padding: 19px 0;
   user-select: none;
   display: flex;
   width: 100%;
@@ -415,23 +415,23 @@
 .marquee-group {
   display: flex;
   align-items: center;
-  gap: 44px;
-  padding-right: 44px;
+  gap: 48px;
+  padding-right: 48px;
   flex-shrink: 0;
   white-space: nowrap;
-  font-size: 11px;
-  letter-spacing: 0.15em;
+  font-size: 13px;
+  letter-spacing: 0.14em;
   font-weight: 850;
   text-transform: uppercase;
 }
 
 .marquee-group span {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .marquee-group b {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   color: #4C3376;
 }
 
@@ -452,14 +452,14 @@
 .problem-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 24px;
 }
 
 .problem-card {
   background: white;
   border: 1px solid var(--border-light);
-  min-height: 305px;
-  padding: 32px;
+  min-height: 320px;
+  padding: 38px 34px 38px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -486,44 +486,44 @@
 }
 
 .problem-n {
-  font-size: 11px;
-  color: #9C8EA8;
-  font-weight: 700;
+  font-size: 13px;
+  color: #8C7B9B;
+  font-weight: 800;
   letter-spacing: 0.12em;
 }
 
 .problem-icon {
-  font-size: 36px;
+  font-size: 38px;
   color: #8E6FCE;
   line-height: 1;
-  margin-top: 43px;
+  margin-top: 38px;
 }
 
 .problem-card h3 {
-  font-size: 23px;
+  font-size: 24px;
   font-weight: 670;
-  letter-spacing: -0.05em;
-  line-height: 1.17;
-  margin: 20px 0 11px;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+  margin: 22px 0 14px;
   color: var(--text);
 }
 
 .problem-card p {
-  color: #77717F;
-  font-size: 13px;
-  line-height: 1.68;
+  color: #4B4554;
+  font-size: 16px;
+  line-height: 1.7;
   margin: 0;
 }
 
 .center-link {
-  margin-top: 33px;
+  margin-top: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   color: var(--iris-dark);
   font-weight: 800;
-  font-size: 12px;
+  font-size: 15px;
   transition: gap 0.2s ease, color 0.2s ease;
 }
 
@@ -536,15 +536,15 @@
 .method-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 24px;
 }
 
 .method-card {
-  padding: 34px 31px 36px;
+  padding: 38px 34px 40px;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-md);
   background: var(--grad-method-card);
-  min-height: 305px;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -576,37 +576,37 @@
 
 .method-card .n {
   color: #B9A5E6;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.13em;
   font-weight: 700;
 }
 
 .method-card .mark {
-  margin: auto 0 30px;
+  margin: auto 0 28px;
   font-size: 55px;
   color: #B8A2FC;
   line-height: 1;
 }
 
 .method-card h3 {
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 670;
-  letter-spacing: -0.05em;
-  margin: 0 0 13px;
+  letter-spacing: -0.045em;
+  margin: 0 0 14px;
   color: var(--white);
 }
 
 .method-card p {
-  font-size: 13px;
-  color: #BBB6C8;
+  font-size: 16px;
+  color: #D7D2E2;
   line-height: 1.75;
   margin: 0;
 }
 
 .method-disclaimer {
-  color: #8A8797;
-  font-size: 10px;
-  margin-top: 17px;
+  color: #B6B0C4;
+  font-size: 13px;
+  margin-top: 20px;
   line-height: 1.7;
 }
 
@@ -678,14 +678,14 @@
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   color: #DBCFFF;
 }
 
 .portrait-layer strong {
   display: block;
   margin-top: 9px;
-  font-size: 35px;
+  font-size: 36px;
   letter-spacing: -0.06em;
   font-weight: 700;
 }
@@ -698,16 +698,16 @@
   display: grid;
   place-items: center;
   text-align: center;
-  width: 120px;
-  height: 120px;
+  width: 124px;
+  height: 124px;
   border-radius: 50%;
   background: #E6D9FF;
   color: #2E2047;
   transform: rotate(12deg);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 750;
-  letter-spacing: 0.1em;
-  line-height: 1.6;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
   box-shadow: 0 8px 30px rgba(40, 21, 46, 0.22);
   border: 1px solid rgba(255, 255, 255, 0.6);
   pointer-events: none;
@@ -717,7 +717,7 @@
 .media-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
+  gap: 24px;
 }
 
 .media-card {
@@ -802,8 +802,8 @@
   position: absolute;
   left: 25px;
   top: 24px;
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #EADFFF;
   font-weight: 700;
@@ -843,10 +843,10 @@
   bottom: 25px;
   left: 26px;
   right: 25px;
-  font-size: 22px;
-  line-height: 1.15;
+  font-size: 23px;
+  line-height: 1.18;
   font-weight: 650;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.045em;
   z-index: 2;
 }
 
@@ -855,7 +855,7 @@
   background: white;
   border: 1px solid #E8E4EF;
   border-radius: var(--radius-lg);
-  padding: 39px 40px 43px;
+  padding: 44px 42px 46px;
   box-shadow: var(--shadow-panel);
   position: relative;
   overflow: hidden;
@@ -879,7 +879,7 @@
 }
 
 .google-logo {
-  font-size: 25px;
+  font-size: 26px;
   letter-spacing: -1.5px;
   font-weight: 600;
   margin-bottom: 25px;
@@ -892,9 +892,9 @@
 
 .google-quote {
   font-size: clamp(22px, 3.3vw, 38px);
-  line-height: 1.2;
-  letter-spacing: -0.055em;
-  max-width: 470px;
+  line-height: 1.25;
+  letter-spacing: -0.05em;
+  max-width: 490px;
   font-weight: 570;
   margin-bottom: 25px;
   color: var(--text);
@@ -902,13 +902,13 @@
 
 .google-stats {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
   align-items: center;
-  font-size: 12px;
-  color: #6C6473;
+  font-size: 15px;
+  color: #4A4252;
   border-top: 1px solid #E9E3ED;
-  padding-top: 21px;
+  padding-top: 24px;
 }
 
 .stars {
@@ -919,10 +919,10 @@
 
 .google-panel small {
   display: block;
-  font-size: 10px;
-  color: #8E8896;
+  font-size: 13px;
+  color: #6C6575;
   line-height: 1.6;
-  margin-top: 15px;
+  margin-top: 16px;
 }
 
 /* FAQ Accordion Component (Section 07) */
@@ -949,9 +949,10 @@
   border: 0;
   width: 100%;
   color: #F6F5F9;
-  padding: 23px 0;
-  font-size: 14px;
-  font-weight: 640;
+  padding: 26px 0;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.35;
   transition: color 0.2s ease;
 }
 
@@ -960,8 +961,8 @@
 }
 
 .faq-item .faq-plus {
-  height: 26px;
-  width: 26px;
+  height: 30px;
+  width: 30px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 50%;
   display: grid;
@@ -969,7 +970,7 @@
   flex: 0 0 auto;
   color: #BEA3FF;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease, border-color 0.2s ease;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
 }
 
@@ -982,9 +983,9 @@
 
 .faq-content {
   display: none;
-  padding: 0 30px 22px 0;
-  color: #AAA4B6;
-  font-size: 13px;
+  padding: 0 32px 28px 0;
+  color: #D6D1E3;
+  font-size: 16px;
   line-height: 1.8;
 }
 
@@ -999,32 +1000,32 @@
   border: 1px solid #E3DAEF;
   border-radius: var(--radius-lg);
   box-shadow: 0 24px 55px rgba(56, 32, 78, 0.08);
-  padding: 39px;
+  padding: 44px;
   color: var(--text);
 }
 
 .form-card h3 {
-  font-size: 30px;
+  font-size: 32px;
   line-height: 1.15;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.05em;
   font-weight: 690;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   color: var(--text);
 }
 
 .form-card > p {
-  font-size: 12px;
-  color: #837B8C;
-  line-height: 1.65;
-  margin: 0 0 26px;
+  font-size: 15px;
+  color: #585062;
+  line-height: 1.7;
+  margin: 0 0 28px;
 }
 
 .form-card label {
   display: block;
-  margin: 17px 0 0;
-  font-size: 11px;
+  margin: 20px 0 0;
+  font-size: 14px;
   font-weight: 750;
-  color: #453C4D;
+  color: #2B2333;
 }
 
 .form-card input,
@@ -1035,12 +1036,12 @@
   border: 1px solid #E9E4EE;
   border-radius: var(--radius-sm);
   width: 100%;
-  padding: 14px 15px;
-  margin-top: 9px;
+  padding: 15px 16px;
+  margin-top: 10px;
   color: #1D1925;
-  font-size: 13px;
+  font-size: 16px;
   outline: 0;
-  min-height: 49px;
+  min-height: 52px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
@@ -1053,20 +1054,20 @@
 }
 
 .form-card textarea {
-  min-height: 87px;
+  min-height: 96px;
   resize: vertical;
 }
 
 .form-card .btn {
   width: 100%;
-  margin-top: 23px;
+  margin-top: 26px;
 }
 
 .form-card .form-note {
-  font-size: 10px;
-  color: #928B98;
+  font-size: 13px;
+  color: #6C6376;
   line-height: 1.7;
-  margin: 13px 0 0;
+  margin: 16px 0 0;
 }
 
 /* ==========================================================================
@@ -1158,19 +1159,19 @@
 }
 
 .modal p {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.75;
-  color: #B2AABA;
+  color: #D8D2E4;
 }
 
 .modal .modal-box {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 13px;
   background: rgba(255, 255, 255, 0.03);
-  padding: 19px;
-  margin: 23px 0;
+  padding: 22px;
+  margin: 24px 0;
   line-height: 1.7;
-  font-size: 13px;
+  font-size: 15px;
   color: #E6E0ED;
 }
 
@@ -1190,7 +1191,7 @@
 .modal pre {
   white-space: pre-wrap;
   word-break: break-word;
-  font: 12px/1.8 var(--sans);
+  font: 14px/1.8 var(--sans);
   background: rgba(255, 255, 255, 0.05);
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.13);

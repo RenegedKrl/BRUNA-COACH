@@ -37,7 +37,7 @@
 
 .brand sup {
   vertical-align: top;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0;
   margin-left: 5px;
   color: var(--lilac);
@@ -45,11 +45,11 @@
 
 .brand-sub {
   display: block;
-  font-size: 8px;
-  letter-spacing: 0.22em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   font-weight: 600;
   text-transform: uppercase;
-  color: #A49CAF;
+  color: #B2AABF;
   margin-top: 6px;
 }
 
@@ -61,9 +61,9 @@
 }
 
 .nav-links a {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
-  color: #C0BDCC;
+  color: #DDD9E8;
   transition: color 0.2s ease;
 }
 
@@ -72,9 +72,9 @@
 }
 
 .nav .btn {
-  min-height: 40px;
-  padding: 11px 16px;
-  font-size: 11px;
+  min-height: 44px;
+  padding: 12px 20px;
+  font-size: 14px;
   gap: 12px;
 }
 
@@ -172,8 +172,8 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 10px;
-  letter-spacing: 0.13em;
+  font-size: 13px;
+  letter-spacing: 0.12em;
   color: #E2D7FF;
   font-weight: 700;
   text-transform: uppercase;
@@ -204,11 +204,11 @@
 }
 
 .hero-desc {
-  color: #B9B5C7;
-  font-size: 15px;
-  line-height: 1.8;
-  max-width: 460px;
-  margin: 26px 0 26px;
+  color: #DDD8E9;
+  font-size: 18px;
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 28px 0 28px;
 }
 
 .hero-actions {
@@ -221,21 +221,21 @@
 .hero-action-secondary {
   display: flex;
   align-items: center;
-  gap: 11px;
-  font-size: 12px;
+  gap: 12px;
+  font-size: 15px;
   font-weight: 650;
-  color: #DBD6E9;
+  color: #E2DDF0;
   transition: color 0.2s ease;
 }
 
 .hero-action-secondary span {
   border: 1px solid rgba(255, 255, 255, 0.22);
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 12px;
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
@@ -252,9 +252,9 @@
 .proof-inline {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
   margin-top: 36px;
-  padding-top: 22px;
+  padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   width: fit-content;
 }
@@ -273,15 +273,15 @@
 
 .proof-stars {
   color: #CAB5FF;
-  font-size: 9px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .proof-small {
-  font-size: 11px;
-  color: #D6D2DC;
+  font-size: 14px;
+  color: #DDD9E4;
 }
 
 /* ───── Coluna direita: Foto com efeitos ───── */
@@ -374,7 +374,7 @@
 }
 
 .photo-badge__text {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: #E8E2F5;
   letter-spacing: 0.04em;
@@ -398,9 +398,9 @@
   bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 9px;
-  letter-spacing: 0.23em;
-  color: #908C9D;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #AEA8BD;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -453,7 +453,7 @@
 .presentation {
   position: relative;
   overflow: hidden;
-  padding: 112px 0 120px;
+  padding: 125px 0 135px;
   background:
     radial-gradient(circle at 78% 48%, rgba(132, 106, 255, 0.18), transparent 34%),
     linear-gradient(180deg, #090911 0%, #0D0B17 100%);
@@ -498,21 +498,21 @@
 }
 
 .presentation-copy > p {
-  color: #AAA6B6;
-  font-size: 14px;
-  line-height: 1.8;
-  max-width: 440px;
+  color: #DDD8E8;
+  font-size: 18px;
+  line-height: 1.75;
+  max-width: 480px;
 }
 
 .demo-notice {
   display: inline-flex;
-  margin-top: 20px;
+  margin-top: 22px;
   border: 1px solid rgba(197, 175, 255, 0.22);
   border-radius: 999px;
-  padding: 8px 12px;
-  color: #CDBEFF;
+  padding: 9px 15px;
+  color: #D6CAFF;
   background: rgba(152, 121, 255, 0.08);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.4;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -572,15 +572,15 @@
   position: absolute;
   top: 24px;
   left: 27px;
-  padding: 7px 10px;
+  padding: 8px 14px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
   background: rgba(10, 8, 19, 0.62);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.12em;
 }
 
 .presentation-player__play {
@@ -630,10 +630,10 @@
 }
 
 .presentation-player__caption small {
-  margin-top: 8px;
-  color: #D6C9F4;
-  font-size: 8px;
-  letter-spacing: 0.16em;
+  margin-top: 10px;
+  color: #DDD2FA;
+  font-size: 12px;
+  letter-spacing: 0.14em;
 }
 
 
@@ -645,7 +645,7 @@
 .problems {
   background: var(--light);
   color: var(--text);
-  padding: 108px 0 120px;
+  padding: 120px 0 135px;
 }
 
 .problems-head {
@@ -653,7 +653,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 35px;
-  margin-bottom: 44px;
+  margin-bottom: 54px;
 }
 
 .problems-head .eyebrow {
@@ -670,7 +670,7 @@
 
 .manifesto {
   background: var(--grad-manifesto);
-  padding: 72px 0;
+  padding: 90px 0;
   position: relative;
   overflow: hidden;
 }
@@ -707,9 +707,9 @@
 }
 
 .manifesto p {
-  max-width: 290px;
-  color: #CBC3D8;
-  font-size: 13px;
+  max-width: 360px;
+  color: #E2DBEC;
+  font-size: 17px;
   line-height: 1.75;
   margin: 0;
 }
@@ -719,7 +719,7 @@
    ========================================================================== */
 
 .method {
-  padding: 125px 0;
+  padding: 135px 0 145px;
   background: var(--method-bg);
   position: relative;
   overflow: hidden;
@@ -744,7 +744,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 35px;
-  margin-bottom: 48px;
+  margin-bottom: 54px;
 }
 
 .method-head .section-title {
@@ -752,10 +752,10 @@
 }
 
 .method-head p {
-  font-size: 14px;
-  color: #B1ACBC;
-  line-height: 1.8;
-  max-width: 360px;
+  font-size: 18px;
+  color: #D6D0E2;
+  line-height: 1.75;
+  max-width: 440px;
   margin: 0;
 }
 
@@ -766,7 +766,7 @@
 .spotlight {
   background: var(--spotlight-bg);
   color: #171421;
-  padding: 117px 0;
+  padding: 130px 0 140px;
   position: relative;
   overflow: hidden;
 }
@@ -797,15 +797,15 @@
 }
 
 .spotlight p {
-  font-size: 14px;
-  line-height: 1.85;
-  color: #77727F;
-  max-width: 570px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #393342;
+  max-width: 590px;
 }
 
 .spotlight ul {
   list-style: none;
-  margin: 26px 0 31px;
+  margin: 30px 0 36px;
   padding: 0;
 }
 
@@ -813,10 +813,11 @@
   display: flex;
   gap: 13px;
   align-items: center;
-  font-size: 13px;
+  font-size: 16px;
   border-top: 1px solid #DED9E6;
-  padding: 15px 0;
-  color: #403847;
+  padding: 17px 0;
+  color: #2B2535;
+  line-height: 1.6;
 }
 
 .spotlight li:first-child {
@@ -833,7 +834,7 @@
    ========================================================================== */
 
 .media {
-  padding: 107px 0 122px;
+  padding: 125px 0 135px;
   background: var(--night);
 }
 
@@ -842,14 +843,14 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 30px;
-  margin-bottom: 34px;
+  margin-bottom: 46px;
 }
 
 .media-head p {
-  max-width: 390px;
-  color: #B9B4C5;
-  font-size: 14px;
-  line-height: 1.8;
+  max-width: 440px;
+  color: #D5CFE2;
+  font-size: 17px;
+  line-height: 1.75;
   margin: 0;
 }
 
@@ -859,7 +860,7 @@
 
 .reputation {
   background: var(--light);
-  padding: 110px 0;
+  padding: 125px 0 135px;
   color: #17151E;
 }
 
@@ -904,10 +905,10 @@
 }
 
 .reputation p {
-  font-size: 13px;
-  line-height: 1.8;
-  color: #76717D;
-  max-width: 460px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #484152;
+  max-width: 480px;
   margin: 0;
 }
 
@@ -916,7 +917,7 @@
    ========================================================================== */
 
 .faq {
-  padding: 116px 0;
+  padding: 125px 0 135px;
   background: var(--panel-dark);
 }
 
@@ -935,10 +936,10 @@
 }
 
 .faq-sub {
-  color: #A4A0B1;
-  font-size: 13px;
-  line-height: 1.85;
-  max-width: 290px;
+  color: #D3CCE0;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 360px;
 }
 
 /* ==========================================================================
@@ -948,7 +949,7 @@
 .lead {
   background: var(--lead-bg);
   color: #17141E;
-  padding: 120px 0 115px;
+  padding: 130px 0 135px;
   position: relative;
   overflow: hidden;
 }
@@ -983,39 +984,39 @@
 }
 
 .lead-intro {
-  font-size: 14px;
-  line-height: 1.85;
-  color: #6F6878;
-  max-width: 420px;
-  margin: 25px 0;
+  font-size: 18px;
+  line-height: 1.75;
+  color: #463F52;
+  max-width: 480px;
+  margin: 28px 0;
 }
 
 .lead-points {
-  margin-top: 35px;
+  margin-top: 38px;
   display: grid;
-  gap: 13px;
+  gap: 16px;
 }
 
 .lead-points span {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  font-weight: 650;
-  color: #655F6E;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #352D40;
 }
 
 .lead-points span::before {
   content: "✓";
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
   color: #7657B4;
   border: 1px solid rgba(158, 136, 189, 0.53);
   border-radius: 50%;
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -1026,7 +1027,7 @@
 .footer {
   background: var(--night);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 50px 0 38px;
+  padding: 60px 0 48px;
 }
 
 .footer-row {
@@ -1041,17 +1042,17 @@
 }
 
 .footer p {
-  font-size: 11px;
-  color: #8E899D;
+  font-size: 14px;
+  color: #AEA8BD;
   line-height: 1.7;
   margin: 14px 0 0;
 }
 
 .footer-right {
   text-align: right;
-  font-size: 11px;
-  color: #9993A7;
-  line-height: 1.6;
+  font-size: 14px;
+  color: #AEA8BD;
+  line-height: 1.7;
 }
 
 .footer-right b {
@@ -1068,13 +1069,13 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #D4C6FF;
   background: rgba(20, 16, 36, 0.75);
   border: 1px solid rgba(197, 175, 255, 0.3);
-  padding: 4px 9px;
+  padding: 5px 11px;
   border-radius: 100px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1107,6 +1108,7 @@
 
   .presentation-copy > p {
     max-width: 620px;
+    font-size: 17px;
   }
 
   .bruna-photo {
@@ -1129,15 +1131,15 @@
   }
 
   .method-card {
-    padding: 27px 22px;
+    padding: 30px 26px;
   }
 
   .spot-grid {
-    gap: 35px;
+    gap: 40px;
   }
 
   .reputation-grid {
-    gap: 35px;
+    gap: 40px;
   }
 
   .faq-grid {
@@ -1145,7 +1147,7 @@
   }
 
   .lead-grid {
-    gap: 35px;
+    gap: 40px;
   }
 }
 
@@ -1160,27 +1162,27 @@
   }
 
   .demobar {
-    font-size: 9px;
-    padding: 6px 12px;
+    font-size: 11px;
+    padding: 7px 14px;
   }
 
   .nav {
-    height: 63px;
+    height: 65px;
   }
 
   .brand {
-    font-size: 21px;
+    font-size: 22px;
   }
 
   .brand-sub {
-    font-size: 7px;
+    font-size: 10px;
   }
 
   .nav .btn {
     margin-left: auto;
-    min-height: 36px;
-    padding: 9px 12px;
-    font-size: 10px;
+    min-height: 40px;
+    padding: 10px 14px;
+    font-size: 13px;
     gap: 8px;
   }
 
@@ -1190,7 +1192,7 @@
 
   .nav-links {
     position: absolute;
-    top: 63px;
+    top: 65px;
     left: 0;
     right: 0;
     padding: 20px 22px 24px;
@@ -1210,8 +1212,8 @@
   }
 
   .nav-links a {
-    font-size: 13px;
-    padding: 8px 0;
+    font-size: 16px;
+    padding: 10px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
@@ -1239,8 +1241,8 @@
 
   .hero-label {
     order: 1;
-    font-size: 9px;
-    letter-spacing: 0.08em;
+    font-size: 12px;
+    letter-spacing: 0.1em;
     margin-bottom: 16px;
   }
 
@@ -1256,9 +1258,9 @@
     order: 4;
     position: relative;
     z-index: 4;
-    font-size: 13px;
-    line-height: 1.68;
-    margin: 18px 0 22px;
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 20px 0 24px;
     max-width: 100%;
   }
 
@@ -1274,7 +1276,7 @@
   }
 
   .hero-action-secondary {
-    font-size: 11px;
+    font-size: 14px;
     justify-content: center;
   }
 
@@ -1284,8 +1286,8 @@
 
   .proof-inline {
     order: 6;
-    margin-top: 20px;
-    padding-top: 16px;
+    margin-top: 22px;
+    padding-top: 18px;
   }
 
   /* Foto da Bruna no Mobile */
@@ -1319,16 +1321,16 @@
     top: auto;
     bottom: 30px;
     right: 10px;
-    padding: 10px 13px;
+    padding: 10px 14px;
     animation: none;
   }
 
   .photo-badge__icon {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .photo-badge__text {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .photo-line-decor {
@@ -1348,11 +1350,11 @@
   }
 
   .presentation {
-    padding: 74px 0 82px;
+    padding: 85px 0 95px;
   }
 
   .presentation-grid {
-    gap: 28px;
+    gap: 30px;
   }
 
   .presentation-copy .section-title {
@@ -1360,7 +1362,8 @@
   }
 
   .presentation-copy > p {
-    font-size: 13px;
+    font-size: 16px;
+    line-height: 1.7;
   }
 
   .presentation-player {
@@ -1380,7 +1383,7 @@
   .presentation-player__topline {
     top: 17px;
     left: 18px;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .presentation-player__caption {
@@ -1391,19 +1394,19 @@
 
   /* Tag de demo nos cards mobile */
   .media-demo-tag {
-    font-size: 8px;
-    padding: 3px 7px;
+    font-size: 11px;
+    padding: 4px 9px;
     top: 10px;
     right: 10px;
   }
 
   .video-bottom strong {
-    font-size: 25px;
+    font-size: 26px;
     max-width: 240px;
   }
 
   .video-bottom small {
-    font-size: 8px;
+    font-size: 11px;
     margin-top: 8px;
   }
 
@@ -1416,27 +1419,27 @@
   }
 
   .frame-floating b {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   .frame-floating small {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .frame-caption {
     top: 55px;
     right: -4px;
-    font-size: 8px;
+    font-size: 11px;
     padding: 8px 12px;
   }
 
   .marquee {
-    padding: 13px 0;
+    padding: 15px 0;
   }
 
   .marquee-track {
-    font-size: 10px;
-    gap: 25px;
+    font-size: 12px;
+    gap: 28px;
   }
 
   .section-title {
@@ -1446,49 +1449,52 @@
   }
 
   .problems {
-    padding: 72px 0 81px;
+    padding: 85px 0 95px;
   }
 
   .problems-head {
     display: block;
-    margin-bottom: 26px;
+    margin-bottom: 30px;
   }
 
   .problems-head .section-intro {
     margin-top: 14px;
-    font-size: 13px;
+    font-size: 16px;
+    line-height: 1.7;
   }
 
   .problem-grid {
     grid-template-columns: 1fr;
-    gap: 11px;
+    gap: 16px;
   }
 
   .problem-card {
     min-height: 0;
-    padding: 23px 24px 25px;
+    padding: 28px 26px 30px;
   }
 
   .problem-icon {
     margin-top: 19px;
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .problem-card h3 {
-    font-size: 22px;
+    font-size: 23px;
     margin-top: 14px;
   }
 
   .problem-card p {
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
   .center-link {
+    font-size: 14px;
     margin-top: 25px;
   }
 
   .manifesto {
-    padding: 63px 0;
+    padding: 75px 0;
   }
 
   .manifesto-inner {
@@ -1501,32 +1507,34 @@
   }
 
   .manifesto p {
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 1.7;
     max-width: 360px;
   }
 
   .method {
-    padding: 78px 0 80px;
+    padding: 85px 0 95px;
   }
 
   .method-head {
     display: block;
-    margin-bottom: 27px;
+    margin-bottom: 30px;
   }
 
   .method-head p {
-    font-size: 13px;
+    font-size: 16px;
+    line-height: 1.7;
     margin: 20px 0 0;
   }
 
   .method-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 16px;
   }
 
   .method-card {
     min-height: 0;
-    padding: 25px 25px 26px;
+    padding: 28px 26px 30px;
   }
 
   .method-card .mark {
@@ -1539,7 +1547,8 @@
   }
 
   .method-card p {
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
   .method-cta .btn {
@@ -1547,16 +1556,22 @@
   }
 
   .spotlight {
-    padding: 77px 0 85px;
+    padding: 85px 0 95px;
   }
 
   .spot-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 32px;
   }
 
   .spotlight p {
-    font-size: 13px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .spotlight li {
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .portrait-frame {
@@ -1572,13 +1587,14 @@
   }
 
   .portrait-sticker {
-    width: 102px;
-    height: 102px;
+    width: 106px;
+    height: 106px;
     right: 1px;
+    font-size: 11px;
   }
 
   .media {
-    padding: 82px 0;
+    padding: 85px 0;
   }
 
   .media-head {
@@ -1587,13 +1603,14 @@
   }
 
   .media-head p {
-    font-size: 13px;
+    font-size: 16px;
+    line-height: 1.7;
     margin-top: 12px;
   }
 
   .media-grid {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding: 4px calc((100vw - 100%) / 2) 20px;
@@ -1626,7 +1643,7 @@
   }
 
   .reputation {
-    padding: 78px 0;
+    padding: 85px 0;
   }
 
   .reputation-grid {
@@ -1643,8 +1660,13 @@
     font-size: 28px;
   }
 
+  .reputation p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
   .google-panel {
-    padding: 30px 25px;
+    padding: 32px 26px;
   }
 
   .google-quote {
@@ -1652,24 +1674,31 @@
   }
 
   .faq {
-    padding: 80px 0;
+    padding: 85px 0;
   }
 
   .faq-grid {
     grid-template-columns: 1fr;
-    gap: 27px;
+    gap: 28px;
   }
 
   .faq-sub {
+    font-size: 16px;
+    line-height: 1.7;
     max-width: 370px;
   }
 
   .faq-item button {
-    font-size: 13px;
+    font-size: 16px;
+  }
+
+  .faq-content {
+    font-size: 15px;
+    line-height: 1.75;
   }
 
   .lead {
-    padding: 78px 0 91px;
+    padding: 85px 0 95px;
   }
 
   .lead-grid {
@@ -1678,19 +1707,29 @@
   }
 
   .lead-intro {
-    font-size: 13px;
+    font-size: 16px;
+    line-height: 1.7;
   }
 
   .lead-points {
-    margin-top: 24px;
+    margin-top: 26px;
+  }
+
+  .lead-points span {
+    font-size: 15px;
   }
 
   .form-card {
-    padding: 26px 22px;
+    padding: 30px 24px;
   }
 
   .form-card h3 {
     font-size: 28px;
+  }
+
+  .form-card > p {
+    font-size: 14px;
+    line-height: 1.65;
   }
 
   .footer {
@@ -1731,7 +1770,9 @@
   .mobile-sticky .btn {
     display: flex;
     width: 100%;
-    min-height: 47px;
+    min-height: 52px;
+    font-size: 15px;
+    font-weight: 750;
   }
 
   .modal {
@@ -1750,16 +1791,16 @@
   }
 
   .nav .btn {
-    font-size: 9px;
+    font-size: 12px;
     padding-inline: 10px;
   }
 
   .hero-desc {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .video-bottom strong {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .section-title {
