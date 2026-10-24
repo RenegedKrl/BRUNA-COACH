@@ -117,32 +117,32 @@ test('carrossel horizontal de avaliações do Google navega com setas e pontos',
   await carousel.scrollIntoViewIfNeeded();
   await expect(carousel).toBeVisible();
 
-  // Verificar carregamento das 4 fotos de perfil dos avaliadores
+  // Verificar carregamento das 11 fotos de perfil dos avaliadores reais
   const photos = page.locator('.review-card__photo');
-  expect(await photos.count()).toBe(4);
-  for (let i = 0; i < 4; i++) {
+  expect(await photos.count()).toBe(11);
+  for (let i = 0; i < 11; i++) {
     await expect.poll(async () => photos.nth(i).evaluate((img) => img.complete && img.naturalWidth > 0)).toBeTruthy();
   }
 
-  // Verificar estado inicial (1 / 4)
+  // Verificar estado inicial (1 / 11)
   const counter = page.locator('#reviewsCounter');
-  await expect(counter).toHaveText('1 / 4');
+  await expect(counter).toHaveText('1 / 11');
   const dots = page.locator('.carousel-dot');
   await expect(dots.nth(0)).toHaveClass(/is-active/);
 
   // Clicar em próxima avaliação (seta direita)
   await page.locator('#reviewsNextBtn').click();
-  await expect(counter).toHaveText('2 / 4');
+  await expect(counter).toHaveText('2 / 11');
   await expect(dots.nth(1)).toHaveClass(/is-active/);
 
   // Clicar no ponto 3 (índice 2)
   await dots.nth(2).click();
-  await expect(counter).toHaveText('3 / 4');
+  await expect(counter).toHaveText('3 / 11');
   await expect(dots.nth(2)).toHaveClass(/is-active/);
 
   // Clicar em avaliação anterior (seta esquerda)
   await page.locator('#reviewsPrevBtn').click();
-  await expect(counter).toHaveText('2 / 4');
+  await expect(counter).toHaveText('2 / 11');
 
   await context.close();
 });

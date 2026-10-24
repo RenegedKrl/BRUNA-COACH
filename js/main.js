@@ -708,6 +708,15 @@
     let currentSlide = 0;
     const totalSlides = reviewSlides.length;
 
+    const updateCarouselHeight = (index) => {
+      if (reviewsContainer && reviewSlides[index]) {
+        const slideH = reviewSlides[index].offsetHeight;
+        if (slideH > 0) {
+          reviewsContainer.style.height = `${slideH}px`;
+        }
+      }
+    };
+
     const goToSlide = (index) => {
       currentSlide = (index + totalSlides) % totalSlides;
       reviewsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -721,7 +730,14 @@
         dot.classList.toggle('is-active', isActive);
         dot.setAttribute('aria-selected', String(isActive));
       });
+
+      updateCarouselHeight(currentSlide);
     };
+
+    // Ajusta a altura inicial e em redimensionamentos de tela
+    window.addEventListener('load', () => updateCarouselHeight(currentSlide));
+    window.addEventListener('resize', () => updateCarouselHeight(currentSlide));
+    setTimeout(() => updateCarouselHeight(0), 150);
 
     if (prevReviewBtn) {
       prevReviewBtn.addEventListener('click', (e) => {

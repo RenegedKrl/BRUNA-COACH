@@ -1061,10 +1061,12 @@
   border-radius: var(--radius-md);
   margin-top: 4px;
   touch-action: pan-y;
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reviews-carousel-track {
   display: flex;
+  align-items: flex-start;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
@@ -1156,12 +1158,21 @@
   flex-shrink: 0;
 }
 
+.review-card__body {
+  flex: 1;
+  margin-bottom: 14px;
+}
+
 .review-card__text {
   font-size: 14.5px;
   line-height: 1.7;
   color: #383042;
-  margin: 0 0 16px 0;
+  margin: 0 0 10px 0;
   font-style: normal;
+}
+
+.review-card__text:last-child {
+  margin-bottom: 0;
 }
 
 .review-card__footer {
@@ -1180,6 +1191,13 @@
   gap: 5px;
   color: #188038;
   font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.verified-tag:hover {
+  color: #0b5f25;
+  text-decoration: underline;
 }
 
 .carousel-dots {
