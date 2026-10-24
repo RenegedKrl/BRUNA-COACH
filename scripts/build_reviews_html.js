@@ -37,22 +37,33 @@ const slidesHtml = reviews.map((r, i) => {
   const name = cleanAuthorName(r.author);
   const subtitle = getReviewSubtitle(r);
   
-  // Format paragraphs nicely with quotes
   const paragraphs = r.text
     .split(/\n+/)
     .map(p => p.trim())
     .filter(Boolean);
 
   let bodyHtml = '';
-  if (paragraphs.length === 1) {
-    bodyHtml = `<p class="review-card__text">"${paragraphs[0]}"</p>`;
+
+  // Quando a avaliação for muito grande (mais de 350 caracteres, como a da Larissa de 725 caracteres e 4 parágrafos),
+  // limitamos ao parágrafo de impacto com reticências e botão "continuar vendo no Google Maps"
+  if (r.text.length > 350) {
+    let excerpt = paragraphs[0];
+    if (!excerpt.endsWith('...')) {
+      if (excerpt.endsWith('.')) excerpt = excerpt.slice(0, -1);
+      excerpt += '...';
+    }
+    bodyHtml = `<p class="review-card__text">"${excerpt}"</p>
+                  <a
+                    href="${r.link}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="review-continue-link"
+                    title="Continuar vendo avaliação completa no Google Maps"
+                  >
+                    ... continuar vendo no Google Maps ↗
+                  </a>`;
   } else {
-    bodyHtml = paragraphs.map((p, pIdx) => {
-      let text = p;
-      if (pIdx === 0) text = `"${text}`;
-      if (pIdx === paragraphs.length - 1) text = `${text}"`;
-      return `<p class="review-card__text">${text}</p>`;
-    }).join('\n                ');
+    bodyHtml = `<p class="review-card__text">"${paragraphs.join(' ')}"</p>`;
   }
 
   return `              <!-- Slide ${i + 1} -->
@@ -113,4 +124,4 @@ ${dotsHtml}
           </div>`;
 
 fs.writeFileSync(path.join(__dirname, '..', 'scratch_reviews_inner.html'), fullSectionInner, 'utf8');
-console.log('HTML gerado com sucesso!');
+console.log('scratch_reviews_inner.html atualizado!');
