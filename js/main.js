@@ -670,51 +670,27 @@
   }
 
   /* ==========================================================================
-     6. Controle do CTA Fixo Mobile (Oculta na primeira dobra e no formulário)
+     6. Controle do CTA Fixo Mobile (Evita cobrir o formulário)
      ========================================================================== */
   const mobileSticky = document.querySelector('.mobile-sticky');
-  const heroSection = document.getElementById('hero');
   const leadSection = document.getElementById('aplicar');
 
-  if (mobileSticky && 'IntersectionObserver' in window) {
-    let heroVisible = true;
-    let leadVisible = false;
+  if (mobileSticky && leadSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Quando a seção do formulário estiver visível, recolhe a barra fixa
+          if (entry.isIntersecting) {
+            mobileSticky.classList.add('is-hidden');
+          } else {
+            mobileSticky.classList.remove('is-hidden');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
 
-    const updateStickyVisibility = () => {
-      if (heroVisible || leadVisible) {
-        mobileSticky.classList.add('is-hidden');
-      } else {
-        mobileSticky.classList.remove('is-hidden');
-      }
-    };
-
-    if (heroSection) {
-      const heroObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            heroVisible = entry.isIntersecting;
-            updateStickyVisibility();
-          });
-        },
-        { threshold: 0.1 }
-      );
-      heroObserver.observe(heroSection);
-    }
-
-    if (leadSection) {
-      const leadObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            leadVisible = entry.isIntersecting;
-            updateStickyVisibility();
-          });
-        },
-        { threshold: 0.12 }
-      );
-      leadObserver.observe(leadSection);
-    }
-
-    updateStickyVisibility();
+    observer.observe(leadSection);
   }
 
   /* ==========================================================================
