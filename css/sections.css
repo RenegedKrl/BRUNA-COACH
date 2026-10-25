@@ -192,8 +192,8 @@
 
 .hero h1 {
   font-size: clamp(46px, 5.2vw, 82px);
-  letter-spacing: -0.045em;
-  line-height: 1.09;
+  letter-spacing: -0.042em;
+  line-height: 1.12;
   font-weight: 680;
   max-width: 720px;
   margin: 0;
@@ -1117,8 +1117,8 @@
 
   .hero h1 {
     font-size: clamp(46px, 5.8vw, 68px);
-    line-height: 1.09;
-    letter-spacing: -0.045em;
+    line-height: 1.12;
+    letter-spacing: -0.042em;
   }
 
   .presentation-grid {
@@ -1285,8 +1285,8 @@
     order: 2;
     font-size: clamp(46px, 11.5vw, 70px);
     max-width: 100%;
-    letter-spacing: -0.042em;
-    line-height: 1.09;
+    letter-spacing: -0.040em;
+    line-height: 1.12;
     padding-bottom: 0.05em;
   }
 
@@ -2019,8 +2019,8 @@
 @media (max-width: 380px) {
   .hero h1 {
     font-size: clamp(35px, 10.5vw, 42px);
-    line-height: 1.10;
-    letter-spacing: -0.04em;
+    line-height: 1.14;
+    letter-spacing: -0.038em;
   }
 
   .nav .btn {

@@ -129,7 +129,11 @@ textarea:focus-visible {
   background-clip: text;
   color: transparent;
   display: inline-block;
-  padding-bottom: 0.06em;
+  padding-top: 0.16em;
+  margin-top: -0.16em;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+  padding-inline: 0.02em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
