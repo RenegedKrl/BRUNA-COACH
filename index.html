@@ -1343,36 +1343,7 @@
           <h3>Aplicação para Mentoria</h3>
           <p>Preencha os campos para iniciar o alinhamento com a mentoria. Retorno em até 24 horas úteis.</p>
           
-          <form id="interestForm" novalidate>
-            <label for="personName">
-              Seu nome completo
-              <input id="personName" name="name" type="text" placeholder="Como prefere ser chamado(a)?" autocomplete="name" maxlength="80" required>
-            </label>
-
-            <label for="personMoment">
-              Qual é o seu cargo ou momento profissional?
-              <select name="moment" id="personMoment" required>
-                <option value="">Selecione seu momento / cargo</option>
-                <option value="Diretoria / C-Level / VP">Diretoria / C-Level / VP</option>
-                <option value="Gerência Sênior / Head de Área">Gerência Sênior / Head de Área</option>
-                <option value="Coordenação / Especialista Sênior">Coordenação / Especialista Sênior</option>
-                <option value="Transição ou Reposicionamento Executivo">Transição ou Reposicionamento Executivo</option>
-                <option value="Empreendedor / Sócio de Negócios">Empreendedor / Sócio de Negócios</option>
-              </select>
-            </label>
-
-            <label for="personMessage">
-              Objetivo principal ou desafio atual <span style="font-weight:400;color:#97919d">(opcional)</span>
-              <textarea name="message" id="personMessage" maxlength="450" placeholder="Conte brevemente sobre o seu momento ou objetivo..."></textarea>
-            </label>
-
-            <button class="btn btn-primary" type="submit">
-              Enviar Aplicação Estratégica 
-              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" aria-hidden="true">
-                <path d="M5 12h14m-6-6 6 6-6 6"/>
-              </svg>
-            </button>
-          </form>
+          <div id="pinaskit-form" data-pinas-form></div>
 
           <p class="form-note">
             Atendimento 100% individual e sigiloso. Suas informações são resguardadas por ética e sigilo executivo.
@@ -1462,7 +1433,7 @@
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
 
-  <!-- Widget de WhatsApp (PinasKit) -->
-  <script async src="http://127.0.0.1:5501/embed.js" data-pinaskit="btn-1792870382402"></script>
+  <!-- Widget do Pinas Kit -->
+  <script async src="http://localhost:3000/w.js" data-pk="9z2g4gmasf" data-api="https://qdpwawkeiyvggcfonfsa.supabase.co/functions/v1"></script>
 </body>
 </html>
