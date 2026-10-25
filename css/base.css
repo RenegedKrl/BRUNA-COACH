@@ -138,6 +138,7 @@ textarea:focus-visible {
   font-weight: 650;
   margin: 22px 0 24px;
   max-width: 820px;
+  text-wrap: balance;
 }
 
 .section-intro {

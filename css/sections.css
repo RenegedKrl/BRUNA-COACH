@@ -652,15 +652,32 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 35px;
+  gap: 40px;
   margin-bottom: 54px;
+}
+
+.problems-head > div:first-child,
+.problems-head-copy {
+  flex: 1 1 680px;
+  max-width: 760px;
+}
+
+.problems-head .section-title {
+  max-width: 760px;
 }
 
 .problems-head .eyebrow {
   color: #7B64A9;
 }
 
+.problems-highlight {
+  color: #8f71cd;
+  white-space: nowrap;
+}
+
 .problems-head .section-intro {
+  flex: 0 1 380px;
+  max-width: 380px;
   margin: 0 0 8px;
 }
 
@@ -1111,6 +1128,21 @@
     font-size: 17px;
   }
 
+  .problems-head {
+    display: block;
+    margin-bottom: 36px;
+  }
+
+  .problems-head > div:first-child,
+  .problems-head-copy {
+    max-width: 100%;
+  }
+
+  .problems-head .section-intro {
+    max-width: 100%;
+    margin-top: 16px;
+  }
+
   .bruna-photo {
     max-width: 420px;
   }
@@ -1495,7 +1527,13 @@
     margin-bottom: 30px;
   }
 
+  .problems-head > div:first-child,
+  .problems-head-copy {
+    max-width: 100%;
+  }
+
   .problems-head .section-intro {
+    max-width: 100%;
     margin-top: 14px;
     font-size: 16px;
     line-height: 1.7;
