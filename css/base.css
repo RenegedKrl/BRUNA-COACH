@@ -128,7 +128,10 @@ textarea:focus-visible {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  display: inline;
+  display: inline-block;
+  padding-bottom: 0.06em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .section-title {
