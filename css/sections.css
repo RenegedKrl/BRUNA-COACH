@@ -191,13 +191,18 @@
 }
 
 .hero h1 {
-  font-size: clamp(46px, 5.2vw, 82px);
-  letter-spacing: -0.042em;
-  line-height: 1.12;
+  font-size: clamp(40px, 4.8vw, 76px);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
   font-weight: 680;
   max-width: 720px;
   margin: 0;
   padding-bottom: 0.04em;
+}
+
+.hero-h1-line {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .hero h1 .gradient-text {
@@ -1116,9 +1121,9 @@
   }
 
   .hero h1 {
-    font-size: clamp(46px, 5.8vw, 68px);
-    line-height: 1.12;
-    letter-spacing: -0.042em;
+    font-size: clamp(36px, 4.6vw, 54px);
+    line-height: 1.15;
+    letter-spacing: -0.038em;
   }
 
   .presentation-grid {
@@ -1283,10 +1288,10 @@
 
   .hero h1 {
     order: 2;
-    font-size: clamp(46px, 11.5vw, 70px);
+    font-size: clamp(32px, 8.8vw, 44px);
     max-width: 100%;
-    letter-spacing: -0.040em;
-    line-height: 1.12;
+    letter-spacing: -0.038em;
+    line-height: 1.15;
     padding-bottom: 0.05em;
   }
 
@@ -2018,9 +2023,9 @@
 /* Small Mobile Screens (<= 380px, e.g. 320px - 375px) */
 @media (max-width: 380px) {
   .hero h1 {
-    font-size: clamp(35px, 10.5vw, 42px);
-    line-height: 1.14;
-    letter-spacing: -0.038em;
+    font-size: clamp(27px, 8.2vw, 33px);
+    line-height: 1.16;
+    letter-spacing: -0.035em;
   }
 
   .nav .btn {
