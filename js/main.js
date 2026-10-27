@@ -776,5 +776,60 @@
     }
   }
 
+  /* ==========================================================================
+     8. Scroll Reveal Animations (IntersectionObserver)
+     ========================================================================== */
+  const revealElements = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
+
+  if (revealElements.length > 0 && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+  }
+
+  /* ==========================================================================
+     9. Navbar scroll shadow enhancement
+     ========================================================================== */
+  const navBar = document.querySelector('.nav');
+  if (navBar) {
+    let lastScroll = 0;
+    const onScroll = () => {
+      const y = window.scrollY;
+      navBar.classList.toggle('nav--scrolled', y > 50);
+      lastScroll = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ==========================================================================
+     10. Smooth counter animation for authority values
+     ========================================================================== */
+  const authorityItems = document.querySelectorAll('.authority-item__val');
+  if (authorityItems.length > 0 && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'countUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both';
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    authorityItems.forEach((item) => counterObserver.observe(item));
+  }
+
   console.log('Landing page Bruna: Mentoria de Carreira carregada com sucesso.');
 })();

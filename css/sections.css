@@ -78,6 +78,12 @@
   gap: 12px;
 }
 
+.nav--scrolled {
+  background: rgba(9, 9, 17, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(152, 121, 255, 0.12);
+}
+
 .nav-toggle {
   display: none;
   border: 1px solid var(--line);
@@ -165,7 +171,7 @@
 .hero-copy {
   position: relative;
   z-index: 2;
-  animation: heroFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: heroFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .hero-label {
@@ -411,6 +417,7 @@
   gap: 10px;
   align-items: center;
   z-index: 2;
+  animation: float 3s ease-in-out infinite;
 }
 
 .hero-scroll::after {
@@ -698,6 +705,17 @@
   overflow: hidden;
 }
 
+.manifesto::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(181, 160, 255, 0.4), transparent);
+  z-index: 1;
+}
+
 .manifesto::after {
   content: "";
   position: absolute;
@@ -709,6 +727,16 @@
   background: rgba(158, 115, 255, 0.32);
   filter: blur(90px);
   pointer-events: none;
+}
+
+.manifesto-inner::after {
+  content: "";
+  position: absolute;
+  bottom: -90px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(181, 160, 255, 0.4), transparent);
 }
 
 .manifesto-inner {
@@ -2068,6 +2096,16 @@
   z-index: 2;
 }
 
+.authority-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lilac), transparent);
+}
+
 .authority-bar__inner {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2204,7 +2242,11 @@
   padding: 38px 36px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.diff-card:hover {
+  transform: translateY(-4px);
 }
 
 .diff-card--negative {
