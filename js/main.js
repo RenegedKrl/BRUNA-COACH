@@ -779,7 +779,7 @@
   /* ==========================================================================
      8. Scroll Reveal Animations (IntersectionObserver)
      ========================================================================== */
-  const revealElements = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
+  const revealElements = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-stagger');
 
   if (revealElements.length > 0 && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver(
